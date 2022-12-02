@@ -1,0 +1,110 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+variables:
+- group: iOS-Build
+- name: XCODE_PATH
+  value: /Applications/Xcode_14.0.app
+- name: SDK
+  value: iphoneos16.0
+- name: Configuration
+  value: Release
+
+pool:
+  vmImage: macos-12
+
+stages:
+- stage: Build_IPA
+  displayName: Build IPA Stage
+  jobs:
+  - job: Build_AppStore
+    displayName: Build App Store ipa
+    steps:
+      - checkout: self
+        persistCredentials: true
+
+      # Install certificate
+      - task: InstallAppleCertificate@2
+        inputs:
+          certPwd: $(CERT_PWD)
+          certSecureFile: $(CERT_NAME)
+          keychain: temp
+      # Install Provisioning Profile
+      - task: InstallAppleProvisioningProfile@1
+        inputs:
+          provisioningProfileLocation: 'secureFiles'
+          provProfileSecureFile: $(PROFILE_NAME_APPSTORE)
+
+      ## Install build tools & Build Ad-Hoc App ##
+      - script: sudo xcode-select -s $(XCODE_PATH)
+        displayName: Select XCode Version
+      - task: UseRubyVersion@0
+        inputs:
+          versionSpec: 3.1
+          addToPath: true
+          
+      - script: bundle install
+        displayName: Install Gems
+      
+      - script: bundle exec fastlane increment_build
+        displayName: Increment Build Number
+
+      - script: git status
+        displayName: Git Status
+      - script: git add .
+        displayName: Git Add
+      - script: git commit -m 'Incremented build number for release'
+        displayName: Git Commit
+      - script: git push origin HEAD:master
+        displayName: Git Push
+      
+      # Build App for Ad-Hoc distribution 
+      - script: bundle exec fastlane build_appstore
+        displayName: Build App Store
+      - task: CopyFiles@2
+        displayName: Copy App Store to Artifacts Staging Directory
+        inputs:
+          contents: '$(Build.SourcesDirectory)/build/appstore/bolt.ipa'
+          targetFolder: $(Build.ArtifactStagingDirectory)
+      - task: PublishBuildArtifacts@1
+        displayName: Publish AppStore
+        inputs:
+          pathToPublish: $(Build.ArtifactStagingDirectory)
+          artifactName: drop
+
+- stage: Build_Deploy_AppStore
+  dependsOn: Build_IPA
+  condition: succeeded()
+  displayName: Build & Deploy To Test Flight
+  jobs:
+    - deployment: Publish_TestFlight
+      environment: Stormy Sky App Store
+      strategy:
+       runOnce:
+         deploy:
+          steps:
+            - checkout: self
+            - task: UseRubyVersion@0
+              inputs:
+                versionSpec: 3.1
+                addToPath: true
+                
+            - script: bundle install
+              displayName: Install Gems
+            - task: DownloadSecureFile@1
+              name: ApiKey
+              inputs:
+                secureFile: appstore_apikey.p8
+            
+            - script: bundle exec fastlane deploy_testflight
+              displayName: Deploy To Test Flight
+              env:
+                APP_STORE_KEY_ID: $(APP_STORE_KEY_ID)
+                APP_STORE_ISSUER_ID: $(APP_STORE_ISSUER_ID)
+                APP_STORE_KEY_FILE: $(ApiKey.secureFilePath)
+                IPA_PATH: $(Agent.BuildDirectory)/drop/build/appstore/bolt.ipa
+        

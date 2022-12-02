@@ -1,0 +1,132 @@
+
+default_platform(:ios)
+
+
+# 
+# Builds
+#
+desc <<END 
+The `build` lane is responsible for building the Bolt application with development configuration.
+END
+lane :build do 
+  puts "Building bolt for development.."
+
+  ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '600'
+  ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '12'
+  ENV['FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT'] = '600'
+
+  build_app(
+    project: "Bolt.ios/Bolt.iOS.xcodeproj",
+    configuration: "Release",
+    export_method: "development",
+    export_options: {
+      provisioningProfiles: {
+        "com.js.bolt" => "bolt-development"
+      }
+    },
+    clean: true,
+    output_directory: "build/dev",
+    output_name: "bolt.ipa",
+    silent: true # hide all unnecessary console output. Disable for debugging
+  )
+end
+
+desc <<END
+The `build_adhoc` lane is responsible for building the application for adhoc distribution
+on Google firebase App Distribution.
+END
+lane :build_adhoc do 
+  puts "Building bolt for adhoc distribution.."
+
+  ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '600'
+  ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '12'
+
+  gym(
+    project: "Bolt.ios/Bolt.iOS.xcodeproj",
+    configuration: "Release",
+    export_method: "ad-hoc",
+    skip_profile_detection: true,
+    export_options: {
+      signingStyle: "manual",
+      provisioningProfiles: {
+        "com.js.bolt": "bolt_adhoc"
+      }
+    },
+    clean: true,
+    output_directory: "build/adhoc",
+    output_name: "bolt.ipa"
+  )
+end
+
+desc <<END
+The 'build_appstore' lane is responsible for building the application for app store distribution
+END
+lane :build_appstore do 
+  puts("Building Bolt for app store..")
+
+  ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '600'
+  ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '12'
+  
+  gym(
+    project: "Bolt.ios/Bolt.iOS.xcodeproj",
+    configuration: "Release",
+    export_method: "app-store",
+    export_options: {
+      signingStyle: "manual",
+      provisioningProfiles: {
+        "com.js.bolt": "bolt_appstore"
+      }
+    },
+    clean: true,
+    output_directory: "build/appstore",
+    output_name: "bolt.ipa"
+  )  
+end
+
+desc <<END
+The 'increment_build' lane is responsible for incrementing the build number in the iOS project
+END
+lane :increment_build do
+  increment_build_number(
+    xcodeproj: "Bolt.iOS/Bolt.iOS.xcodeproj"
+  )
+end
+
+#
+# Deploy
+#
+desc <<END
+The 'deploy_testflight' lane is used to deploy the bolt application to a proper TestFlight channel in 
+App Store connect. 
+END
+lane :deploy_testflight do
+  api_key = app_store_connect_api_key(
+    key_id: ENV['APP_STORE_KEY_ID'],
+    issuer_id: ENV['APP_STORE_ISSUER_ID'],
+    key_filepath: ENV['APP_STORE_KEY_FILE']
+  )
+
+  upload_to_testflight(
+    api_key: api_key,
+    skip_submission: true,
+    ipa: ENV['IPA_PATH'],
+    skip_waiting_for_build_processing: true,
+  )
+end
+
+#
+# Tests
+# 
+desc <<END 
+The `test_ios` lane is responsible for running unit tests and automation tests on iPhone 14
+END
+lane :test_ios do 
+  puts "Running tests on iPhone 14..."
+
+  # Run Unit tests & UI Tests
+  run_tests(
+    project: "Bolt.ios/Bolt.iOS.xcodeproj",
+    scheme: "Bolt.iOS"
+  )
+end
+
