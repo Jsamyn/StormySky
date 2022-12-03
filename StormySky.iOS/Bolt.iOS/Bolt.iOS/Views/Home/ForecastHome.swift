@@ -22,21 +22,21 @@ struct ForecastHome: View {
             
             /* Activity Indicator */
             //ActivityIndicator(isVisible: $vm.state.isLoading)
-            
-            /* Refresh Button */
-            if (vm.state.isLoading){
-                ProgressView()
-                    .tint(Color("PrimaryDark"))
-                    .scaleEffect(1.25)
-                    .padding()
-            } else {
-                Button(action: reload){
-                    Image(systemName: "arrow.clockwise")
-                        .foregroundColor(Color("PrimaryDark"))
-                        .fontWeight(.bold)
-                        .padding()
+            Group {
+                /* Refresh Button */
+                if (vm.state.isLoading){
+                    ProgressView()
+                        .tint(Color("PrimaryDark"))
+                        .padding(5)
+                } else {
+                    Button(action: reload){
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundColor(Color("PrimaryDark"))
+                            .fontWeight(.bold)
+                            .padding(6)
+                    }
                 }
-            }
+            }.frame(width: 25, height: 25)
             
             /* City Information */
             CText("\(vm.state.forecast.city), \(vm.state.forecast.state)")
