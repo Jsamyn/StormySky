@@ -20,7 +20,7 @@ struct Home: View {
                     Label("Home", systemImage: "house")
                 }
                 
-            Text("Locations")
+            Locations()
                 .tabItem {
                     Label("Locations", systemImage: "building.2")
                 }
