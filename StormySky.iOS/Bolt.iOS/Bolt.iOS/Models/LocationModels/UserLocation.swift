@@ -15,6 +15,11 @@ struct UserLocation : Identifiable {
     var id: Int
     
     /**
+     Flag showing weather location is users current preferred location
+     */
+    var isSelected: Bool
+    
+    /**
      Name of the city
      */
     var city: String
@@ -23,11 +28,6 @@ struct UserLocation : Identifiable {
      State where location resides
      */
     var state: String
-    
-    /**
-     Country where the location resides
-     */
-    var country: String
     
     /**
      Geographic latitude of the city

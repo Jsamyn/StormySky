@@ -9,29 +9,29 @@ import SwiftUI
 
 struct LocationCell: View {
     
-    var isSelected: Bool = false
+    var location: UserLocation
+    
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("United States")
-                Text("Chicago, IL")
+                Text("\(location.city), \(location.state)")
                     .font(.title)
             }
             .padding()
             
             Spacer()
             
-            Text("22°")
+            Text("\(location.lastTemp)°")
                 .font(.title)
+            Image(systemName: location.icon)
             
-            Image(systemName: "sun.max")
                 .font(.title)
         }
         .padding(5)
         .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(isSelected ? Color("PrimaryDark") : Color("Primary"))
+                    .stroke(location.isSelected ? Color("PrimaryDark") : Color("Primary"))
         )
         .padding(10)
     }
@@ -39,7 +39,8 @@ struct LocationCell: View {
 
 struct LocationCell_Previews: PreviewProvider {
     static var previews: some View {
-        LocationCell(isSelected: false)
+        let l = UserLocation(id: 1, isSelected: true, city: "Chicago", state: "IL", latitude: 1.0, longitude: 1.0, lastTemp: 80, icon: "sun.max")
+        LocationCell(location: l)
             .background(Color("Primary"))
     }
 }

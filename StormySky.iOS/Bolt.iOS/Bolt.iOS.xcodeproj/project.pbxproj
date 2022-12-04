@@ -30,6 +30,7 @@
 		4CD7F2CF2904C502006EE20B /* Bolt_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7F2CE2904C502006EE20B /* Bolt_iOSTests.swift */; };
 		4CD7F2D92904C502006EE20B /* Bolt_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7F2D82904C502006EE20B /* Bolt_iOSUITests.swift */; };
 		4CD7F2DB2904C502006EE20B /* Bolt_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7F2DA2904C502006EE20B /* Bolt_iOSUITestsLaunchTests.swift */; };
+		4CE18457293C1EA0003F1B12 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		4CD7F2D82904C502006EE20B /* Bolt_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt_iOSUITests.swift; sourceTree = "<group>"; };
 		4CD7F2DA2904C502006EE20B /* Bolt_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4CE18453293C13F1003F1B12 /* Bolt-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bolt-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				4CB337662929D76D008CD844 /* Locations.swift */,
 				4CB337692929D8AD008CD844 /* LocationCell.swift */,
+				4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				4C5469D329369F730006D9DC /* DailyForecastService.swift in Sources */,
 				4C994EFA292FDCE00055A2A4 /* ViewModel.swift in Sources */,
 				4CC5EB0429253D500048D2C8 /* WeatherDataWidget.swift in Sources */,
+				4CE18457293C1EA0003F1B12 /* LocationsViewModel.swift in Sources */,
 				4CD7F2BF2904C501006EE20B /* ForecastHome.swift in Sources */,
 				4CAC39A4290F7BFB0078816B /* AppDelagate.swift in Sources */,
 				4C994EF8292FDA970055A2A4 /* UserLocation.swift in Sources */,
