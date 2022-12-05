@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C5319F5293D991F005C41AA /* ForecastHomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */; };
 		4C5469D329369F730006D9DC /* DailyForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5469D229369F730006D9DC /* DailyForecastService.swift */; };
 		4C5469D62936A6600006D9DC /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5469D52936A6600006D9DC /* DailyForecast.swift */; };
 		4C7D78672925B85000738D61 /* CText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D78662925B85000738D61 /* CText.swift */; };
@@ -31,6 +32,7 @@
 		4CD7F2D92904C502006EE20B /* Bolt_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7F2D82904C502006EE20B /* Bolt_iOSUITests.swift */; };
 		4CD7F2DB2904C502006EE20B /* Bolt_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7F2DA2904C502006EE20B /* Bolt_iOSUITestsLaunchTests.swift */; };
 		4CE18457293C1EA0003F1B12 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */; };
+		4CE1845A293C2CAB003F1B12 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE18459293C2CAB003F1B12 /* UserLocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastHomeViewModelTests.swift; sourceTree = "<group>"; };
 		4C5469D229369F730006D9DC /* DailyForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastService.swift; sourceTree = "<group>"; };
 		4C5469D52936A6600006D9DC /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
 		4C7D78662925B85000738D61 /* CText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CText.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		4CD7F2DA2904C502006EE20B /* Bolt_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4CE18453293C13F1003F1B12 /* Bolt-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bolt-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		4CE18459293C2CAB003F1B12 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +111,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C5319F3293D98E6005C41AA /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */,
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
 		4C5469D029369F570006D9DC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4CE18458293C2C9E003F1B12 /* Locations */,
 				4C5469D129369F5E0006D9DC /* Weather */,
 			);
 			path = Services;
@@ -245,6 +258,7 @@
 		4CD7F2CD2904C502006EE20B /* Bolt.iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				4C5319F3293D98E6005C41AA /* ViewModelTests */,
 				4CD7F2CE2904C502006EE20B /* Bolt_iOSTests.swift */,
 			);
 			path = Bolt.iOSTests;
@@ -257,6 +271,14 @@
 				4CD7F2DA2904C502006EE20B /* Bolt_iOSUITestsLaunchTests.swift */,
 			);
 			path = Bolt.iOSUITests;
+			sourceTree = "<group>";
+		};
+		4CE18458293C2C9E003F1B12 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				4CE18459293C2CAB003F1B12 /* UserLocationService.swift */,
+			);
+			path = Locations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,6 +433,7 @@
 				4CB337672929D76D008CD844 /* Locations.swift in Sources */,
 				4CD7F2BD2904C501006EE20B /* Bolt_iOSApp.swift in Sources */,
 				4C7D78692925BC3100738D61 /* Home.swift in Sources */,
+				4CE1845A293C2CAB003F1B12 /* UserLocationService.swift in Sources */,
 				4CB3376A2929D8AD008CD844 /* LocationCell.swift in Sources */,
 				4C7D78672925B85000738D61 /* CText.swift in Sources */,
 			);
@@ -420,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5319F5293D991F005C41AA /* ForecastHomeViewModelTests.swift in Sources */,
 				4CD7F2CF2904C502006EE20B /* Bolt_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

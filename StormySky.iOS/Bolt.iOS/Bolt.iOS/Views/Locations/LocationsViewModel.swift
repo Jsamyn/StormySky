@@ -25,20 +25,33 @@ enum LocationsInput {
 class LocationsViewModel: ViewModel {
     
     @Published
-    var state: LocationsState
+    var state: LocationsState = LocationsState()
+    
+    private let locationsService: UserLocationService
     
     init() {
-        state = LocationsState(locations: [UserLocation(id: 1, isSelected: true, city: "Chicago", state: "IL", latitude: 1.0, longitude: 1.0, lastTemp: 80, icon: "sun.max")])
+        locationsService = UserLocationService()
     }
     
+    /**
+     Handle user input into the view
+     
+     - Parameters:
+        - input: input action being performed
+     */
     func trigger(_ input: LocationsInput) {
         switch(input) {
         case .load:
-            print("Loading..")
+            Task {
+                await loadLocations()
+            }
         case .addLocation:
             print("Adding location..")
         }
     }
     
-    
+    /* Private Methods */
+    @MainActor private func loadLocations() async -> Void {
+        state.locations = await locationsService.getUserLocations()
+    }
 }

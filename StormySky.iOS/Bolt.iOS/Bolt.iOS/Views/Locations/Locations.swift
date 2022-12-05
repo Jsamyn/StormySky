@@ -24,7 +24,7 @@ struct Locations: View {
                 .padding()
             
             /* Location List */
-            ForEach(vm.state.locations) { location in
+            ForEach(self.vm.state.locations) { location in
                 LocationCell(location: location)
             }
             
@@ -44,6 +44,9 @@ struct Locations: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Primary"))
+        .onAppear{
+            vm.trigger(LocationsInput.load)
+        }
     }
     
     /* Methods */
