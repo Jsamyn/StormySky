@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Bolt_iOS
 
 final class ForecastHomeViewModelTests: XCTestCase {
 
@@ -18,17 +19,12 @@ final class ForecastHomeViewModelTests: XCTestCase {
     }
 
     /**
-     Tests the view model trigger method with .loading input
+     Tests the init method properly initializes the state object
      */
     func testTriggerLoadingInput() throws {
+        let vm: ForecastHomeViewModel = ForecastHomeViewModel()
         
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        XCTAssertNotNil(vm.state)
     }
 
 }
