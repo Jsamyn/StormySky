@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C5319F5293D991F005C41AA /* ForecastHomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */; };
 		4C5469D329369F730006D9DC /* DailyForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5469D229369F730006D9DC /* DailyForecastService.swift */; };
 		4C5469D62936A6600006D9DC /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5469D52936A6600006D9DC /* DailyForecast.swift */; };
 		4C7D78672925B85000738D61 /* CText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D78662925B85000738D61 /* CText.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastHomeViewModelTests.swift; sourceTree = "<group>"; };
 		4C5469D229369F730006D9DC /* DailyForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastService.swift; sourceTree = "<group>"; };
 		4C5469D52936A6600006D9DC /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
 		4C7D78662925B85000738D61 /* CText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CText.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C5319F3293D98E6005C41AA /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */,
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
 		4C5469D029369F570006D9DC /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +258,7 @@
 		4CD7F2CD2904C502006EE20B /* Bolt.iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				4C5319F3293D98E6005C41AA /* ViewModelTests */,
 				4CD7F2CE2904C502006EE20B /* Bolt_iOSTests.swift */,
 			);
 			path = Bolt.iOSTests;
@@ -432,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5319F5293D991F005C41AA /* ForecastHomeViewModelTests.swift in Sources */,
 				4CD7F2CF2904C502006EE20B /* Bolt_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
