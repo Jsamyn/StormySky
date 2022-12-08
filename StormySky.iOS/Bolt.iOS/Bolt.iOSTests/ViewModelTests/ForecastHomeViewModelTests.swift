@@ -6,11 +6,13 @@
 //
 
 import XCTest
+@testable import Bolt_iOS
 
 final class ForecastHomeViewModelTests: XCTestCase {
+    
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
 
     override func tearDownWithError() throws {
@@ -18,17 +20,32 @@ final class ForecastHomeViewModelTests: XCTestCase {
     }
 
     /**
-     Tests the view model trigger method with .loading input
+     Tests the init method properly initializes the state object
      */
-    func testTriggerLoadingInput() throws {
+    func testViewModelInitialization() {
         
+        let dfService = MockDailyForecastService()
+        let vm: ForecastHomeViewModel = ForecastHomeViewModel(dailyForecastService: dfService)
+        
+        XCTAssertNotNil(vm.state)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    /**
+     Tests the trigger function with loading input/action
+     */
+    func testLoadingInputAction() async {
+        /* Arrange */
+        let dfService = MockDailyForecastService()
+        let vm: ForecastHomeViewModel = ForecastHomeViewModel(dailyForecastService: dfService)
+        let forecast = DailyForecast(city: "Chicago", state: "IL", date: Date.now, temperature: 88, icon: "sun.max", weatherDescription: "Partly Sunny", realFeel: 80)
+        
+        /* Act */
+        await vm.trigger(ForecastHomeInput.load)
+        
+        /* Assert */
+        XCTAssertNotNil(vm.state)
+        XCTAssertEqual(vm.state.forecast, forecast)
+        
     }
 
 }

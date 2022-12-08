@@ -13,8 +13,8 @@ struct ForecastHome: View {
     @ObservedObject
     var vm: ForecastHomeViewModel
     
-    init() {
-        self.vm = ForecastHomeViewModel()
+    init(dailyForecastService: DailyForecastServiceProtocol) {
+        self.vm = ForecastHomeViewModel(dailyForecastService: dailyForecastService)
     }
     
     var body: some View {
@@ -88,7 +88,9 @@ struct ForecastHome: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Primary"))
         .onAppear {
-            vm.trigger(ForecastHomeInput.load)
+            Task {
+                await vm.trigger(ForecastHomeInput.load)
+            }
         }
     }
     
@@ -96,12 +98,15 @@ struct ForecastHome: View {
      Reload daily forecast data and refresh page UI
      */
     func reload() {
-        vm.trigger(ForecastHomeInput.load)
+        Task {
+            await vm.trigger(ForecastHomeInput.load)
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        ForecastHome()
+        ForecastHome(dailyForecastService: MockDailyForecastService())
     }
 }
