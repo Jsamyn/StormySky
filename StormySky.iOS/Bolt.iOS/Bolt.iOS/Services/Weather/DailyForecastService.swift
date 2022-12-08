@@ -26,4 +26,12 @@ class DailyForecastService: DailyForecastServiceProtocol {
             
    }
 }
+
+class MockDailyForecastService: DailyForecastServiceProtocol {
+    func fetchDailyForecast() async -> DailyForecast {
+        let forecast = DailyForecast(city: "Chicago", state: "IL", date: Date.now, temperature: 88, icon: "sun.max", weatherDescription: "Partly Sunny", realFeel: 80)
+        return forecast
+            
+   }
+}
     

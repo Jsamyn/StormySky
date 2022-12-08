@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 struct ForecastHomeState {
-    var forecast: DailyForecast = DailyForecast()
+    var forecast: DailyForecast = DailyForecast(city: "", state: "", date: Date.now, temperature: 0, icon: "sun.max", weatherDescription: "", realFeel: 0)
     var isLoading: Bool = false
 }
 
@@ -25,20 +25,19 @@ class ForecastHomeViewModel: ViewModel {
     
     /* Private Variables */
     private var forecastServiceCancellable: AnyCancellable?
-    private let forecastService = DailyForecastService()
+    private let forecastService: DailyForecastServiceProtocol
     
     /* Constructor */
-    init() {
+    init(dailyForecastService: DailyForecastServiceProtocol) {
         self.state = ForecastHomeState()
+        self.forecastService = dailyForecastService
     }
  
-    func trigger(_ input: ForecastHomeInput) {
+    func trigger(_ input: ForecastHomeInput) async {
         switch input {
             /* Page Load Action */
             case .load:
-            Task {
                 await loadDailyForecast()
-            }
         }
     }
     

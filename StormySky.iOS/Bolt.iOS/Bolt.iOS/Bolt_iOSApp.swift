@@ -12,9 +12,15 @@ struct Bolt_iOSApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    /** IoC Initialization **/
+    /* Singletons */
+    
+    /* Transients */
+    let dailyForecastService: DailyForecastServiceProtocol = DailyForecastService()
+    
     var body: some Scene {
         WindowGroup {
-            Home()
+            Home(dailyForecastService: self.dailyForecastService)
         }
     }
 }

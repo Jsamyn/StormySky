@@ -25,5 +25,5 @@ protocol ViewModel: ObservableObject {
     /**
      Updates state based on the input provided
      */
-    func trigger(_ input: Input)
+    func trigger(_ input: Input) async 
 }
