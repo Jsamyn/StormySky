@@ -10,41 +10,45 @@ import XCTest
 
 final class ForecastHomeViewModelTests: XCTestCase {
     
+    struct MockDailyForecastService: DailyForecastServiceProtocol {
+        
+        func fetchDailyForecast() async -> DailyForecast {
+            let forecast = DailyForecast(city: "Chicago", state: "IL", date: Date.now, temperature: 88, icon: "sun.max", weatherDescription: "Partly Sunny", realFeel: 80)
+            return forecast
+                
+       }
+    }
+    
+    var dfService: DailyForecastServiceProtocol!
+    var vm: ForecastHomeViewModel!
+    var forecast: DailyForecast!
 
     override func setUpWithError() throws {
+        self.dfService = MockDailyForecastService()
+        self.vm = ForecastHomeViewModel(dailyForecastService: dfService)
+        self.forecast = DailyForecast(city: "Chicago", state: "IL", date: Date.now, temperature: 88, icon: "sun.max", weatherDescription: "Partly Sunny", realFeel: 80)
         
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    /**
-     Tests the init method properly initializes the state object
-     */
-    func testViewModelInitialization() {
-        
-        let dfService = MockDailyForecastService()
-        let vm: ForecastHomeViewModel = ForecastHomeViewModel(dailyForecastService: dfService)
-        
-        XCTAssertNotNil(vm.state)
     }
     
     /**
      Tests the trigger function with loading input/action
      */
-    func testLoadingInputAction() async {
+    func testLoadingInputAction() {
+        
         /* Arrange */
-        let dfService = MockDailyForecastService()
-        let vm: ForecastHomeViewModel = ForecastHomeViewModel(dailyForecastService: dfService)
-        let forecast = DailyForecast(city: "Chicago", state: "IL", date: Date.now, temperature: 88, icon: "sun.max", weatherDescription: "Partly Sunny", realFeel: 80)
-        
+        let exp = XCTestExpectation(description: "Fetch daily forecast..")
+
         /* Act */
-        await vm.trigger(ForecastHomeInput.load)
+        Task {
+            await vm.trigger(ForecastHomeInput.load)
+            exp.fulfill()
+        }
         
+        wait(for: [exp], timeout: 3)
+
         /* Assert */
-        XCTAssertNotNil(vm.state)
-        XCTAssertEqual(vm.state.forecast, forecast)
+        XCTAssertNotNil(self.vm.state)
+        XCTAssertEqual(self.vm.state.forecast, forecast)
         
     }
 

@@ -10,11 +10,13 @@ import SwiftUI
 struct Home: View {
     
     let dailyForecastService: DailyForecastServiceProtocol
+    let locationService: UserLocationServiceProtocol
     
-    init(dailyForecastService: DailyForecastServiceProtocol) {
+    init(dailyForecastService: DailyForecastServiceProtocol, locationService: UserLocationServiceProtocol) {
         UITabBar.appearance().unselectedItemTintColor = UIColor(named: "PrimaryDark")
         
         self.dailyForecastService = dailyForecastService
+        self.locationService = locationService
     }
     
     var body: some View {
@@ -24,7 +26,7 @@ struct Home: View {
                     Label("Home", systemImage: "house")
                 }
                 
-            Locations()
+            Locations(locationsService: self.locationService)
                 .tabItem {
                     Label("Locations", systemImage: "building.2")
                 }
@@ -44,6 +46,6 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home(dailyForecastService: MockDailyForecastService())
+        Home(dailyForecastService: DailyForecastService(), locationService: UserLocationService())
     }
 }

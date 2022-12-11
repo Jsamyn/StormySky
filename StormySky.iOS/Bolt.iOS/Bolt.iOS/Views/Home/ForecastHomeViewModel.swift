@@ -9,6 +9,11 @@ import Foundation
 import Combine
 
 struct ForecastHomeState {
+    
+    init() {
+        print("Initializing...")
+    }
+    
     var forecast: DailyForecast = DailyForecast(city: "", state: "", date: Date.now, temperature: 0, icon: "sun.max", weatherDescription: "", realFeel: 0)
     var isLoading: Bool = false
 }
@@ -20,16 +25,13 @@ enum ForecastHomeInput {
 class ForecastHomeViewModel: ViewModel {
     
     /* Published Variables */
-    @Published
-    var state: ForecastHomeState
+    @Published var state: ForecastHomeState = ForecastHomeState()
     
     /* Private Variables */
-    private var forecastServiceCancellable: AnyCancellable?
     private let forecastService: DailyForecastServiceProtocol
     
     /* Constructor */
     init(dailyForecastService: DailyForecastServiceProtocol) {
-        self.state = ForecastHomeState()
         self.forecastService = dailyForecastService
     }
  
@@ -42,9 +44,10 @@ class ForecastHomeViewModel: ViewModel {
     }
     
     /* Private Methods */
-    @MainActor private func loadDailyForecast() async {
+    @MainActor private func loadDailyForecast() async -> Void {
         state.isLoading = true
         self.state.forecast = await self.forecastService.fetchDailyForecast()
+        print("fetching forecast..")
         state.isLoading = false
     }
     

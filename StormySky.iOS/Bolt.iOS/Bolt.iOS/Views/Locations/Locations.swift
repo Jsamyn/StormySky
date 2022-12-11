@@ -11,8 +11,8 @@ struct Locations: View {
     
     @ObservedObject var vm: LocationsViewModel
     
-    init(){
-        self.vm = LocationsViewModel()
+    init(locationsService: UserLocationServiceProtocol){
+        self.vm = LocationsViewModel(locationService: locationsService)
     }
     
  
@@ -22,11 +22,13 @@ struct Locations: View {
             Text("Locations")
                 .font(.title)
                 .padding()
+                .accessibilityIdentifier("LocationTitle")
             
             /* Location List */
             ForEach(self.vm.state.locations) { location in
                 LocationCell(location: location)
             }
+            .accessibilityIdentifier("LocationsList")
             
             /* Add Button */
             Button(action: add) {
@@ -38,6 +40,8 @@ struct Locations: View {
             .background(Color("PrimaryDark"))
             .clipShape(Circle())
             .padding()
+            .accessibilityIdentifier("AddButton")
+            
             Spacer()
             
             
@@ -45,7 +49,9 @@ struct Locations: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("Primary"))
         .onAppear{
-            vm.trigger(LocationsInput.load)
+            Task {
+                await vm.trigger(LocationsInput.load)
+            }
         }
     }
     
@@ -57,6 +63,6 @@ struct Locations: View {
 
 struct Locations_Previews: PreviewProvider {
     static var previews: some View {
-        Locations()
+        Locations(locationsService: UserLocationService())
     }
 }

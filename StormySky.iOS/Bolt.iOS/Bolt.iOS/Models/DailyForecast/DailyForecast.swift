@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DailyForecast {
+struct DailyForecast: Decodable {
     
     /**
      City the forecase is for

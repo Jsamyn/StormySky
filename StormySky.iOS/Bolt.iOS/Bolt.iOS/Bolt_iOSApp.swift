@@ -14,13 +14,17 @@ struct Bolt_iOSApp: App {
     
     /** IoC Initialization **/
     /* Singletons */
-    
-    /* Transients */
     let dailyForecastService: DailyForecastServiceProtocol = DailyForecastService()
+    let locationService: UserLocationServiceProtocol = UserLocationService()
+    
+    /* Transient */
     
     var body: some Scene {
         WindowGroup {
-            Home(dailyForecastService: self.dailyForecastService)
+            Home(
+                dailyForecastService: self.dailyForecastService,
+                locationService: self.locationService
+            )
         }
     }
 }
