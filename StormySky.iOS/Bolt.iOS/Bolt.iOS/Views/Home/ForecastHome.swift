@@ -10,8 +10,7 @@ import SwiftUI
 struct ForecastHome: View {
     
     @State private var isMetric: Bool = false
-    @ObservedObject
-    var vm: ForecastHomeViewModel
+    @ObservedObject var vm: ForecastHomeViewModel
     
     init(dailyForecastService: DailyForecastServiceProtocol) {
         self.vm = ForecastHomeViewModel(dailyForecastService: dailyForecastService)
@@ -107,6 +106,6 @@ struct ForecastHome: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ForecastHome(dailyForecastService: MockDailyForecastService())
+        ForecastHome(dailyForecastService: DailyForecastService())
     }
 }

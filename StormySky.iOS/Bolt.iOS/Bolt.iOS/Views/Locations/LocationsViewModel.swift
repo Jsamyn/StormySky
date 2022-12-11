@@ -19,18 +19,18 @@ struct LocationsState {
  */
 enum LocationsInput {
     case load
-    case addLocation
 }
 
 class LocationsViewModel: ViewModel {
     
     @Published
-    var state: LocationsState = LocationsState()
+    var state: LocationsState
     
-    private let locationsService: UserLocationService
+    private let locationsService: UserLocationServiceProtocol
     
-    init() {
-        locationsService = UserLocationService()
+    init(locationService: UserLocationServiceProtocol) {
+        self.locationsService = locationService
+        self.state = LocationsState()
     }
     
     /**
@@ -39,14 +39,10 @@ class LocationsViewModel: ViewModel {
      - Parameters:
         - input: input action being performed
      */
-    func trigger(_ input: LocationsInput) {
+    func trigger(_ input: LocationsInput) async {
         switch(input) {
         case .load:
-            Task {
-                await loadLocations()
-            }
-        case .addLocation:
-            print("Adding location..")
+            await loadLocations()
         }
     }
     

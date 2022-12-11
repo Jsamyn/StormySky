@@ -8,10 +8,17 @@
 import Foundation
 import Combine
 
+enum ServiceError: Error {
+    case jsonDecodeError
+    case serviceUnavailable
+    case unauthorized
+    case notFound
+}
+
 protocol DailyForecastServiceProtocol {
     
     /**
-     Get daily forecase for currently selected region
+     Get daily forecast for currently selected region
      */
     func fetchDailyForecast() async -> DailyForecast
 }
@@ -20,18 +27,8 @@ protocol DailyForecastServiceProtocol {
 class DailyForecastService: DailyForecastServiceProtocol {
     
     func fetchDailyForecast() async -> DailyForecast {
-        Thread.sleep(forTimeInterval: 2)
         let forecast = DailyForecast(city: "Chicago", state: "IL", date: Date.now, temperature: 88, icon: "sun.max", weatherDescription: "Partly Sunny", realFeel: 80)
         return forecast
-            
-   }
-}
-
-class MockDailyForecastService: DailyForecastServiceProtocol {
-    func fetchDailyForecast() async -> DailyForecast {
-        let forecast = DailyForecast(city: "Chicago", state: "IL", date: Date.now, temperature: 88, icon: "sun.max", weatherDescription: "Partly Sunny", realFeel: 80)
-        return forecast
-            
    }
 }
     
