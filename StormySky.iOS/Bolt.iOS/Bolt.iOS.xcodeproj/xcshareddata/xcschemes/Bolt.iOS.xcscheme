@@ -61,6 +61,17 @@
                ReferencedContainer = "container:Bolt.iOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4C3A44A92946D09600B440BB"
+               BuildableName = "Bolt.iOS_UITests.xctest"
+               BlueprintName = "Bolt.iOS_UITests"
+               ReferencedContainer = "container:Bolt.iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

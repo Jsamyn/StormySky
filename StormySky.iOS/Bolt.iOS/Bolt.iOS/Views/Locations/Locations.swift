@@ -5,9 +5,12 @@
 //  Created by Joseph Samyn on 11/19/22.
 //
 
+// TODO: Refactor LocationList into a separate view for testability
+
 import SwiftUI
 
 struct Locations: View {
+    
     
     @ObservedObject var vm: LocationsViewModel
     
@@ -22,13 +25,13 @@ struct Locations: View {
             Text("Locations")
                 .font(.title)
                 .padding()
-                .accessibilityIdentifier("LocationTitle")
+                .accessibilityIdentifier("locations_title")
             
             /* Location List */
             ForEach(self.vm.state.locations) { location in
                 LocationCell(location: location)
             }
-            .accessibilityIdentifier("LocationsList")
+            .accessibilityIdentifier("locations_list")
             
             /* Add Button */
             Button(action: add) {
@@ -40,7 +43,7 @@ struct Locations: View {
             .background(Color("PrimaryDark"))
             .clipShape(Circle())
             .padding()
-            .accessibilityIdentifier("AddButton")
+            .accessibilityIdentifier("add_button")
             
             Spacer()
             
