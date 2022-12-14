@@ -23,7 +23,7 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Testing"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
@@ -47,28 +47,6 @@
                BlueprintIdentifier = "4CD7F2C92904C502006EE20B"
                BuildableName = "Bolt.iOSTests.xctest"
                BlueprintName = "Bolt.iOSTests"
-               ReferencedContainer = "container:Bolt.iOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4CD7F2D32904C502006EE20B"
-               BuildableName = "Bolt.iOSUITests.xctest"
-               BlueprintName = "Bolt.iOSUITests"
-               ReferencedContainer = "container:Bolt.iOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C3A44A92946D09600B440BB"
-               BuildableName = "Bolt.iOS_UITests.xctest"
-               BlueprintName = "Bolt.iOS_UITests"
                ReferencedContainer = "container:Bolt.iOS.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -44,8 +44,10 @@ struct Home: View {
     }
 }
 
+#if !TESTING
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home(dailyForecastService: DailyForecastService(), locationService: UserLocationService())
     }
 }
+#endif

@@ -7,21 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C20082229458CE60057116E /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 4C20082129458CE60057116E /* ViewInspector */; };
-		4C3A44AD2946D09600B440BB /* Bolt_iOS_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A44AC2946D09600B440BB /* Bolt_iOS_UITests.swift */; };
-		4C3A44B42946D17A00B440BB /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 4C3A44B32946D17A00B440BB /* ViewInspector */; };
-		4C3A44B62946D22500B440BB /* LocationsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A44B52946D22500B440BB /* LocationsViewTests.swift */; };
+		4C01F1D62949788700EC5DFF /* LocationView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C01F1D52949788700EC5DFF /* LocationView_Tests.swift */; };
+		4C01F1D8294978A700EC5DFF /* LocationListView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C01F1D7294978A700EC5DFF /* LocationListView_Tests.swift */; };
 		4C5319F5293D991F005C41AA /* ForecastHomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */; };
 		4C5469D329369F730006D9DC /* DailyForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5469D229369F730006D9DC /* DailyForecastService.swift */; };
 		4C5469D62936A6600006D9DC /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5469D52936A6600006D9DC /* DailyForecast.swift */; };
 		4C6551842946E42500BC2F34 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6551832946E42500BC2F34 /* Inspection.swift */; };
 		4C7D78672925B85000738D61 /* CText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D78662925B85000738D61 /* CText.swift */; };
 		4C7D78692925BC3100738D61 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D78682925BC3100738D61 /* Home.swift */; };
+		4C7E273E294967C00096B87E /* LocationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E273D294967C00096B87E /* LocationsList.swift */; };
 		4C994EF8292FDA970055A2A4 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C994EF7292FDA970055A2A4 /* UserLocation.swift */; };
 		4C994EFA292FDCE00055A2A4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C994EF9292FDCE00055A2A4 /* ViewModel.swift */; };
 		4C994EFE292FEFE50055A2A4 /* ForecastHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C994EFD292FEFE50055A2A4 /* ForecastHomeViewModel.swift */; };
 		4CAC39A4290F7BFB0078816B /* AppDelagate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC39A3290F7BFB0078816B /* AppDelagate.swift */; };
-		4CAC39A6290F80E60078816B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC39A5290F80E60078816B /* GoogleService-Info.plist */; };
 		4CB337672929D76D008CD844 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB337662929D76D008CD844 /* Locations.swift */; };
 		4CB3376A2929D8AD008CD844 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB337692929D8AD008CD844 /* LocationCell.swift */; };
 		4CC5EB0429253D500048D2C8 /* WeatherDataWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5EB0329253D500048D2C8 /* WeatherDataWidget.swift */; };
@@ -32,26 +30,14 @@
 		4CD7F2C12904C502006EE20B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD7F2C02904C502006EE20B /* Assets.xcassets */; };
 		4CD7F2C52904C502006EE20B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD7F2C42904C502006EE20B /* Preview Assets.xcassets */; };
 		4CD7F2CF2904C502006EE20B /* Bolt_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7F2CE2904C502006EE20B /* Bolt_iOSTests.swift */; };
+		4CDA1A54294975EA0094FCA7 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDA1A53294975EA0094FCA7 /* ViewInspector */; };
+		4CDA1A59294977CE0094FCA7 /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDA1A58294977CE0094FCA7 /* InspectionExtension.swift */; };
 		4CE18457293C1EA0003F1B12 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */; };
 		4CE1845A293C2CAB003F1B12 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE18459293C2CAB003F1B12 /* UserLocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4C3A44AE2946D09600B440BB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4CD7F2B12904C501006EE20B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4CD7F2B82904C501006EE20B;
-			remoteInfo = Bolt.iOS;
-		};
 		4CD7F2CB2904C502006EE20B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4CD7F2B12904C501006EE20B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4CD7F2B82904C501006EE20B;
-			remoteInfo = Bolt.iOS;
-		};
-		4CD7F2D52904C502006EE20B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CD7F2B12904C501006EE20B /* Project object */;
 			proxyType = 1;
@@ -61,20 +47,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C3A44AA2946D09600B440BB /* Bolt.iOS_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bolt.iOS_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C3A44AC2946D09600B440BB /* Bolt_iOS_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt_iOS_UITests.swift; sourceTree = "<group>"; };
-		4C3A44B52946D22500B440BB /* LocationsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewTests.swift; sourceTree = "<group>"; };
+		4C01F1D52949788700EC5DFF /* LocationView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView_Tests.swift; sourceTree = "<group>"; };
+		4C01F1D7294978A700EC5DFF /* LocationListView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView_Tests.swift; sourceTree = "<group>"; };
 		4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastHomeViewModelTests.swift; sourceTree = "<group>"; };
 		4C5469D229369F730006D9DC /* DailyForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastService.swift; sourceTree = "<group>"; };
 		4C5469D52936A6600006D9DC /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
 		4C6551832946E42500BC2F34 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		4C7D78662925B85000738D61 /* CText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CText.swift; sourceTree = "<group>"; };
 		4C7D78682925BC3100738D61 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		4C7E273D294967C00096B87E /* LocationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsList.swift; sourceTree = "<group>"; };
 		4C994EF7292FDA970055A2A4 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		4C994EF9292FDCE00055A2A4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4C994EFD292FEFE50055A2A4 /* ForecastHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastHomeViewModel.swift; sourceTree = "<group>"; };
 		4CAC39A3290F7BFB0078816B /* AppDelagate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelagate.swift; sourceTree = "<group>"; };
-		4CAC39A5290F80E60078816B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4CB337662929D76D008CD844 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		4CB337692929D8AD008CD844 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		4CC5EB0329253D500048D2C8 /* WeatherDataWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataWidget.swift; sourceTree = "<group>"; };
@@ -88,21 +73,13 @@
 		4CD7F2C42904C502006EE20B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4CD7F2CA2904C502006EE20B /* Bolt.iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bolt.iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD7F2CE2904C502006EE20B /* Bolt_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bolt_iOSTests.swift; sourceTree = "<group>"; };
-		4CD7F2D42904C502006EE20B /* Bolt.iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Bolt.iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CDA1A58294977CE0094FCA7 /* InspectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionExtension.swift; sourceTree = "<group>"; };
 		4CE18453293C13F1003F1B12 /* Bolt-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bolt-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
 		4CE18459293C2CAB003F1B12 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4C3A44A72946D09600B440BB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C3A44B42946D17A00B440BB /* ViewInspector in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4CD7F2B62904C501006EE20B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,36 +91,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4CD7F2D12904C502006EE20B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C20082229458CE60057116E /* ViewInspector in Frameworks */,
+				4CDA1A54294975EA0094FCA7 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4C3A44AB2946D09600B440BB /* Bolt.iOS_UITests */ = {
-			isa = PBXGroup;
-			children = (
-				4C3A44AC2946D09600B440BB /* Bolt_iOS_UITests.swift */,
-				4C3A44B52946D22500B440BB /* LocationsViewTests.swift */,
-			);
-			path = Bolt.iOS_UITests;
-			sourceTree = "<group>";
-		};
-		4C5319F3293D98E6005C41AA /* ViewModelTests */ = {
+		4C5319F3293D98E6005C41AA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				4C5319F4293D991F005C41AA /* ForecastHomeViewModelTests.swift */,
 				4CD24FB42943BFB000A09F33 /* LocationsViewModelTests.swift */,
 			);
-			path = ViewModelTests;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		4C5469D029369F570006D9DC /* Services */ = {
@@ -224,6 +185,7 @@
 				4CB337662929D76D008CD844 /* Locations.swift */,
 				4CB337692929D8AD008CD844 /* LocationCell.swift */,
 				4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */,
+				4C7E273D294967C00096B87E /* LocationsList.swift */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -247,10 +209,8 @@
 		4CD7F2B02904C501006EE20B = {
 			isa = PBXGroup;
 			children = (
-				4CAC39A5290F80E60078816B /* GoogleService-Info.plist */,
 				4CD7F2BB2904C501006EE20B /* Bolt.iOS */,
-				4CD7F2CD2904C502006EE20B /* Bolt.iOSTests */,
-				4C3A44AB2946D09600B440BB /* Bolt.iOS_UITests */,
+				4CD7F2CD2904C502006EE20B /* Bolt.iOS_Tests */,
 				4CD7F2BA2904C501006EE20B /* Products */,
 				4CE31A19293E75E6002A61BD /* Frameworks */,
 			);
@@ -261,8 +221,6 @@
 			children = (
 				4CD7F2B92904C501006EE20B /* Bolt.iOS.app */,
 				4CD7F2CA2904C502006EE20B /* Bolt.iOSTests.xctest */,
-				4CD7F2D42904C502006EE20B /* Bolt.iOSUITests.xctest */,
-				4C3A44AA2946D09600B440BB /* Bolt.iOS_UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,13 +251,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4CD7F2CD2904C502006EE20B /* Bolt.iOSTests */ = {
+		4CD7F2CD2904C502006EE20B /* Bolt.iOS_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				4C5319F3293D98E6005C41AA /* ViewModelTests */,
+				4CDA1A52294975D10094FCA7 /* UI */,
+				4C5319F3293D98E6005C41AA /* ViewModels */,
 				4CD7F2CE2904C502006EE20B /* Bolt_iOSTests.swift */,
+				4CDA1A58294977CE0094FCA7 /* InspectionExtension.swift */,
 			);
-			path = Bolt.iOSTests;
+			path = Bolt.iOS_Tests;
+			sourceTree = "<group>";
+		};
+		4CDA1A52294975D10094FCA7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4C01F1D52949788700EC5DFF /* LocationView_Tests.swift */,
+				4C01F1D7294978A700EC5DFF /* LocationListView_Tests.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		4CE18458293C2C9E003F1B12 /* Locations */ = {
@@ -320,27 +289,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C3A44A92946D09600B440BB /* Bolt.iOS_UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4C3A44B02946D09600B440BB /* Build configuration list for PBXNativeTarget "Bolt.iOS_UITests" */;
-			buildPhases = (
-				4C3A44A62946D09600B440BB /* Sources */,
-				4C3A44A72946D09600B440BB /* Frameworks */,
-				4C3A44A82946D09600B440BB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4C3A44AF2946D09600B440BB /* PBXTargetDependency */,
-			);
-			name = Bolt.iOS_UITests;
-			packageProductDependencies = (
-				4C3A44B32946D17A00B440BB /* ViewInspector */,
-			);
-			productName = Bolt.iOS_UITests;
-			productReference = 4C3A44AA2946D09600B440BB /* Bolt.iOS_UITests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		4CD7F2B82904C501006EE20B /* Bolt.iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CD7F2DE2904C502006EE20B /* Build configuration list for PBXNativeTarget "Bolt.iOS" */;
@@ -375,31 +323,11 @@
 			);
 			name = Bolt.iOSTests;
 			packageProductDependencies = (
+				4CDA1A53294975EA0094FCA7 /* ViewInspector */,
 			);
 			productName = Bolt.iOSTests;
 			productReference = 4CD7F2CA2904C502006EE20B /* Bolt.iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4CD7F2D32904C502006EE20B /* Bolt.iOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4CD7F2E42904C502006EE20B /* Build configuration list for PBXNativeTarget "Bolt.iOSUITests" */;
-			buildPhases = (
-				4CD7F2D02904C502006EE20B /* Sources */,
-				4CD7F2D12904C502006EE20B /* Frameworks */,
-				4CD7F2D22904C502006EE20B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4CD7F2D62904C502006EE20B /* PBXTargetDependency */,
-			);
-			name = Bolt.iOSUITests;
-			packageProductDependencies = (
-				4C20082129458CE60057116E /* ViewInspector */,
-			);
-			productName = Bolt.iOSUITests;
-			productReference = 4CD7F2D42904C502006EE20B /* Bolt.iOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -411,18 +339,10 @@
 				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
-					4C3A44A92946D09600B440BB = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = 4CD7F2B82904C501006EE20B;
-					};
 					4CD7F2B82904C501006EE20B = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
 					4CD7F2C92904C502006EE20B = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = 4CD7F2B82904C501006EE20B;
-					};
-					4CD7F2D32904C502006EE20B = {
 						CreatedOnToolsVersion = 14.0.1;
 						TestTargetID = 4CD7F2B82904C501006EE20B;
 					};
@@ -446,20 +366,11 @@
 			targets = (
 				4CD7F2B82904C501006EE20B /* Bolt.iOS */,
 				4CD7F2C92904C502006EE20B /* Bolt.iOSTests */,
-				4CD7F2D32904C502006EE20B /* Bolt.iOSUITests */,
-				4C3A44A92946D09600B440BB /* Bolt.iOS_UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4C3A44A82946D09600B440BB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4CD7F2B72904C501006EE20B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,7 +378,6 @@
 				4CD24FB32942E33C00A09F33 /* dailyforecast.json in Resources */,
 				4CD7F2C52904C502006EE20B /* Preview Assets.xcassets in Resources */,
 				4CD7F2C12904C502006EE20B /* Assets.xcassets in Resources */,
-				4CAC39A6290F80E60078816B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,25 +388,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4CD7F2D22904C502006EE20B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4C3A44A62946D09600B440BB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C3A44AD2946D09600B440BB /* Bolt_iOS_UITests.swift in Sources */,
-				4C3A44B62946D22500B440BB /* LocationsViewTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4CD7F2B52904C501006EE20B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +411,7 @@
 				4CE1845A293C2CAB003F1B12 /* UserLocationService.swift in Sources */,
 				4CB3376A2929D8AD008CD844 /* LocationCell.swift in Sources */,
 				4C7D78672925B85000738D61 /* CText.swift in Sources */,
+				4C7E273E294967C00096B87E /* LocationsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,80 +419,160 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C01F1D62949788700EC5DFF /* LocationView_Tests.swift in Sources */,
 				4C5319F5293D991F005C41AA /* ForecastHomeViewModelTests.swift in Sources */,
+				4CDA1A59294977CE0094FCA7 /* InspectionExtension.swift in Sources */,
+				4C01F1D8294978A700EC5DFF /* LocationListView_Tests.swift in Sources */,
 				4CD24FB52943BFB100A09F33 /* LocationsViewModelTests.swift in Sources */,
 				4CD7F2CF2904C502006EE20B /* Bolt_iOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4CD7F2D02904C502006EE20B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4C3A44AF2946D09600B440BB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4CD7F2B82904C501006EE20B /* Bolt.iOS */;
-			targetProxy = 4C3A44AE2946D09600B440BB /* PBXContainerItemProxy */;
-		};
 		4CD7F2CC2904C502006EE20B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CD7F2B82904C501006EE20B /* Bolt.iOS */;
 			targetProxy = 4CD7F2CB2904C502006EE20B /* PBXContainerItemProxy */;
 		};
-		4CD7F2D62904C502006EE20B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4CD7F2B82904C501006EE20B /* Bolt.iOS */;
-			targetProxy = 4CD7F2D52904C502006EE20B /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		4C3A44B12946D09600B440BB /* Debug */ = {
+		4C01F1D929497EC200EC5DFF /* Testing */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3JLTAQR626;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.js.Bolt-iOS-UITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bolt.iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bolt.iOS";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TESTING;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Debug;
+			name = Testing;
 		};
-		4C3A44B22946D09600B440BB /* Release */ = {
+		4C01F1DA29497EC200EC5DFF /* Testing */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Bolt.iOS/Bolt_iOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_ASSET_PATHS = "\"Bolt.iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3JLTAQR626;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Bolt-iOS-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Stormy Sky";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = StormySkyLaunchScreen.storyboard;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.js.bolt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = bolt_development;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Testing;
+		};
+		4C01F1DB29497EC200EC5DFF /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 3JLTAQR626;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.js.Bolt-iOS-UITests";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.js.Bolt-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bolt.iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Bolt.iOS";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Testing;
 		};
 		4CD7F2DC2904C502006EE20B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -862,66 +837,14 @@
 			};
 			name = Release;
 		};
-		4CD7F2E52904C502006EE20B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
-				DEVELOPMENT_TEAM = RNFSW36JUL;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.js.Bolt-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Bolt.iOS;
-			};
-			name = Debug;
-		};
-		4CD7F2E62904C502006EE20B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
-				DEVELOPMENT_TEAM = RNFSW36JUL;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.js.Bolt-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Bolt.iOS;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C3A44B02946D09600B440BB /* Build configuration list for PBXNativeTarget "Bolt.iOS_UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4C3A44B12946D09600B440BB /* Debug */,
-				4C3A44B22946D09600B440BB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4CD7F2B42904C501006EE20B /* Build configuration list for PBXProject "Bolt.iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CD7F2DC2904C502006EE20B /* Debug */,
+				4C01F1D929497EC200EC5DFF /* Testing */,
 				4CD7F2DD2904C502006EE20B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -931,6 +854,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CD7F2DF2904C502006EE20B /* Debug */,
+				4C01F1DA29497EC200EC5DFF /* Testing */,
 				4CD7F2E02904C502006EE20B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -940,16 +864,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CD7F2E22904C502006EE20B /* Debug */,
+				4C01F1DB29497EC200EC5DFF /* Testing */,
 				4CD7F2E32904C502006EE20B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4CD7F2E42904C502006EE20B /* Build configuration list for PBXNativeTarget "Bolt.iOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4CD7F2E52904C502006EE20B /* Debug */,
-				4CD7F2E62904C502006EE20B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -968,12 +884,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4C20082129458CE60057116E /* ViewInspector */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4C20081E29458A9F0057116E /* XCRemoteSwiftPackageReference "ViewInspector" */;
-			productName = ViewInspector;
-		};
-		4C3A44B32946D17A00B440BB /* ViewInspector */ = {
+		4CDA1A53294975EA0094FCA7 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C20081E29458A9F0057116E /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
