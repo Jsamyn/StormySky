@@ -28,9 +28,7 @@ struct Locations: View {
                 .accessibilityIdentifier("locations_title")
             
             /* Location List */
-            ForEach(self.vm.state.locations) { location in
-                LocationCell(location: location)
-            }
+            LocationsList(locations: self.vm.state.locations)
             .accessibilityIdentifier("locations_list")
             
             /* Add Button */
@@ -64,8 +62,10 @@ struct Locations: View {
     }
 }
 
+#if !TESTING
 struct Locations_Previews: PreviewProvider {
     static var previews: some View {
         Locations(locationsService: UserLocationService())
     }
 }
+#endif

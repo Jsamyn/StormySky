@@ -37,6 +37,7 @@ struct LocationCell: View {
     }
 }
 
+#if !TESTING
 struct LocationCell_Previews: PreviewProvider {
     static var previews: some View {
         let l = UserLocation(id: 1, isSelected: true, city: "Chicago", state: "IL", latitude: 1.0, longitude: 1.0, lastTemp: 80, icon: "sun.max")
@@ -44,3 +45,4 @@ struct LocationCell_Previews: PreviewProvider {
             .background(Color("Primary"))
     }
 }
+#endif
