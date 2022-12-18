@@ -22,3 +22,8 @@ jobs:
       - name: Install Ruby Gems
         working-directory: ./StormySky.iOS
         run: bundle install
+
+      # Execute Unit Tests
+      - name: Run Automated Tests
+        working-directory: ./StormySky.iOS
+        run: bundle exec fastlane test_ios
