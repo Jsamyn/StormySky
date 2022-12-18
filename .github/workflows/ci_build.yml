@@ -22,11 +22,6 @@ jobs:
       - name: Install Ruby Gems
         working-directory: ./StormySky.iOS
         run: bundle install
-    
-      - name: Select XCode 14
-        uses: maxim-lobanov/setup-xcode@v1.5.1
-        with: 
-          xcode-version: '14.0.1'
 
       # Execute Unit Tests
       - name: Run Automated Tests
