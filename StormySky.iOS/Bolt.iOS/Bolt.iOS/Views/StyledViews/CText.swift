@@ -19,9 +19,11 @@ struct CText: View {
     }
 }
 
+#if !TESTING
 struct CText_Previews: PreviewProvider {
     static var previews: some View {
         CText("Hello")
             .previewLayout(.sizeThatFits)
     }
 }
+#endif

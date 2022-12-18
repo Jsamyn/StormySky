@@ -9,8 +9,6 @@ import SwiftUI
 
 
 struct LocationsList: View {
-    let inspection = Inspection<Self>()
-    
     var locations: [UserLocation]
     
     init (locations: [UserLocation]) {
