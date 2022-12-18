@@ -126,7 +126,8 @@ lane :test_ios do
   # Run Unit tests & UI Tests
   run_tests(
     project: "Bolt.ios/Bolt.iOS.xcodeproj",
-    scheme: "Bolt.iOS"
+    scheme: "Bolt.iOS",
+	devices: ["iPhone 14"]
   )
 end
 
