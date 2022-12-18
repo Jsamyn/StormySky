@@ -34,7 +34,6 @@ struct Locations: View {
             /* Add Button */
             Button(action: add) {
                 Image(systemName: "plus")
-                    .fontWeight(.bold)
                     .foregroundColor(Color("Primary"))
             }
             .frame(width: 40, height: 40)

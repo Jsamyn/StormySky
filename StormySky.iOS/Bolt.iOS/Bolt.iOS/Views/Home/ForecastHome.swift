@@ -31,7 +31,6 @@ struct ForecastHome: View {
                     Button(action: reload){
                         Image(systemName: "arrow.clockwise")
                             .foregroundColor(Color("PrimaryDark"))
-                            .fontWeight(.bold)
                             .padding(6)
                     }
                 }
@@ -49,7 +48,6 @@ struct ForecastHome: View {
             /* Current Weather Icon */
             Image(systemName: vm.state.forecast.icon)
                 .font(.system(size: 150))
-                .fontWeight(.thin)
                 .foregroundColor(Color("PrimaryDark"))
                 .padding(15)
             
@@ -60,10 +58,8 @@ struct ForecastHome: View {
             
             CText(vm.state.forecast.weatherDescription)
                 .font(.title2)
-                .fontWeight(.light)
             CText("Feels Like \(vm.state.forecast.realFeel)")
                 .font(.subheadline)
-                .fontWeight(.light)
                 .padding(.bottom)
             
             Divider()

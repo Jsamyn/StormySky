@@ -40,7 +40,7 @@ struct Home: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-        }.toolbar(.visible, for: .tabBar)
+        }
     }
 }
 
