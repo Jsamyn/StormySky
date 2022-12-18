@@ -8,5 +8,15 @@ jobs:
   build_ios:
     runs-on: macos-latest
     steps:
+      # Checkout source code
       - name: Checkout Repository 
         uses: actions/checkout@v1
+      
+      # Install proper ruby version
+      - name: Install Ruby 3.1
+        uses: actions/setup-ruby@v1
+        with: 
+          ruby-version: 3.1
+      
+      # Install ruby gems
+      - run: ls -all
