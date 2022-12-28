@@ -12,6 +12,10 @@ import Foundation
  */
 struct LocationsState {
     var locations: [UserLocation] = []
+    var addLocationsVisible: Bool = false
+    var locationsText: String = ""
+    var addLocationErrorVisible: Bool = false
+    var addLocationErrorText: String = ""
 }
 
 /**
@@ -19,6 +23,8 @@ struct LocationsState {
  */
 enum LocationsInput {
     case load
+    case toggleModal
+    case validateLocationsText
 }
 
 class LocationsViewModel: ViewModel {
@@ -43,11 +49,37 @@ class LocationsViewModel: ViewModel {
         switch(input) {
         case .load:
             await loadLocations()
+            
+        case .toggleModal:
+            await toggleAddLocationModal()
+            
+        case .validateLocationsText:
+            await validateLocationsText()
         }
     }
     
-    /* Private Methods */
+    /* Private Input Methods */
+    /**
+     Load users locations from storage
+     */
     @MainActor private func loadLocations() async -> Void {
         state.locations = await locationsService.getUserLocations()
     }
+    
+    /**
+     Toggle display of addLocationModal
+     */
+    @MainActor private func toggleAddLocationModal() async -> Void {
+        state.addLocationsVisible.toggle()
+    }
+    
+    /**
+     Toggle display of error text and display proper error text string to user
+     */
+    @MainActor private func validateLocationsText() async -> Void {
+        if self.state.locationsText.count < 5 {
+            self.state.addLocationErrorVisible = true
+        }
+    }
+    
 }

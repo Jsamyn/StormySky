@@ -9,6 +9,11 @@
 
 import SwiftUI
 
+
+
+/**
+ Main view for locations page
+ */
 struct Locations: View {
     
     
@@ -20,44 +25,54 @@ struct Locations: View {
     
  
     var body: some View {
-        VStack {
-            /* Title */
-            Text("Locations")
-                .font(.title)
+        
+        // MARK: Main Page
+        ZStack {
+            VStack {
+                /* Title */
+                Text("Locations")
+                    .font(.title)
+                    .padding()
+                    .accessibilityIdentifier("locations_title")
+                
+                /* Location List */
+                LocationsList(locations: self.vm.state.locations)
+                    .accessibilityIdentifier("locations_list")
+                
+                /* Add Button */
+                Button(action: add) {
+                    Image(systemName: "plus")
+                        .foregroundColor(Color("Primary"))
+                }
+                .frame(width: 40, height: 40)
+                .background(Color("PrimaryDark"))
+                .clipShape(Circle())
                 .padding()
-                .accessibilityIdentifier("locations_title")
-            
-            /* Location List */
-            LocationsList(locations: self.vm.state.locations)
-            .accessibilityIdentifier("locations_list")
-            
-            /* Add Button */
-            Button(action: add) {
-                Image(systemName: "plus")
-                    .foregroundColor(Color("Primary"))
+                .accessibilityIdentifier("add_button")
+                
+                Spacer()
+                
+                
             }
-            .frame(width: 40, height: 40)
-            .background(Color("PrimaryDark"))
-            .clipShape(Circle())
-            .padding()
-            .accessibilityIdentifier("add_button")
-            
-            Spacer()
-            
-            
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("Primary"))
-        .onAppear{
-            Task {
-                await vm.trigger(LocationsInput.load)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("Primary"))
+            .onAppear{
+                Task {
+                    await vm.trigger(LocationsInput.load)
+                }
             }
+            
+            // MARK: Location Add Modal
+            AddLocationsModal(isVisible: $vm.state.addLocationsVisible, vm: vm)
         }
+        
     }
     
     /* Methods */
     private func add() -> Void {
-        print("Adding City..")
+        Task {
+            await vm.trigger(.toggleModal)
+        }
     }
 }
 
@@ -67,4 +82,12 @@ struct Locations_Previews: PreviewProvider {
         Locations(locationsService: UserLocationService())
     }
 }
+
+//struct AddLocationsModal_Preview: PreviewProvider {
+//    static var previews: some View {
+//        AddLocationsModal()
+//            .previewLayout(PreviewLayout.sizeThatFits)
+//            .padding()
+//    }
+//}
 #endif
