@@ -14,8 +14,6 @@ struct LocationsState {
     var locations: [UserLocation] = []
     var addLocationsVisible: Bool = false
     var locationsText: String = ""
-    var addLocationErrorVisible: Bool = false
-    var addLocationErrorText: String = ""
 }
 
 /**
@@ -24,7 +22,6 @@ struct LocationsState {
 enum LocationsInput {
     case load
     case toggleModal
-    case validateLocationsText
 }
 
 class LocationsViewModel: ViewModel {
@@ -52,9 +49,6 @@ class LocationsViewModel: ViewModel {
             
         case .toggleModal:
             await toggleAddLocationModal()
-            
-        case .validateLocationsText:
-            await validateLocationsText()
         }
     }
     
@@ -71,15 +65,6 @@ class LocationsViewModel: ViewModel {
      */
     @MainActor private func toggleAddLocationModal() async -> Void {
         state.addLocationsVisible.toggle()
-    }
-    
-    /**
-     Toggle display of error text and display proper error text string to user
-     */
-    @MainActor private func validateLocationsText() async -> Void {
-        if self.state.locationsText.count < 5 {
-            self.state.addLocationErrorVisible = true
-        }
     }
     
 }

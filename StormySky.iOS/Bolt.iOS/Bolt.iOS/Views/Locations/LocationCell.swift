@@ -33,7 +33,6 @@ struct LocationCell: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(location.isSelected ? Color("PrimaryDark") : Color("Primary"))
         )
-        .padding(10)
     }
 }
 

@@ -54,6 +54,7 @@ struct Locations: View {
                 
                 
             }
+            .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("Primary"))
             .onAppear{
@@ -82,12 +83,4 @@ struct Locations_Previews: PreviewProvider {
         Locations(locationsService: UserLocationService())
     }
 }
-
-//struct AddLocationsModal_Preview: PreviewProvider {
-//    static var previews: some View {
-//        AddLocationsModal()
-//            .previewLayout(PreviewLayout.sizeThatFits)
-//            .padding()
-//    }
-//}
 #endif
