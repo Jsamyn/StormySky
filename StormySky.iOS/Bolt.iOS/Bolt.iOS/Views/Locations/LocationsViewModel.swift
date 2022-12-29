@@ -12,6 +12,8 @@ import Foundation
  */
 struct LocationsState {
     var locations: [UserLocation] = []
+    var addLocationsVisible: Bool = false
+    var locationsText: String = ""
 }
 
 /**
@@ -19,6 +21,7 @@ struct LocationsState {
  */
 enum LocationsInput {
     case load
+    case toggleModal
 }
 
 class LocationsViewModel: ViewModel {
@@ -43,11 +46,25 @@ class LocationsViewModel: ViewModel {
         switch(input) {
         case .load:
             await loadLocations()
+            
+        case .toggleModal:
+            await toggleAddLocationModal()
         }
     }
     
-    /* Private Methods */
+    /* Private Input Methods */
+    /**
+     Load users locations from storage
+     */
     @MainActor private func loadLocations() async -> Void {
         state.locations = await locationsService.getUserLocations()
     }
+    
+    /**
+     Toggle display of addLocationModal
+     */
+    @MainActor private func toggleAddLocationModal() async -> Void {
+        state.addLocationsVisible.toggle()
+    }
+    
 }
