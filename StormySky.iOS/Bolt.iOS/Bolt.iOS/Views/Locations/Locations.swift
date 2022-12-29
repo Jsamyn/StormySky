@@ -16,7 +16,7 @@ import SwiftUI
  */
 struct Locations: View {
     
-    
+    @Namespace private var animation
     @ObservedObject var vm: LocationsViewModel
     
     init(locationsService: UserLocationServiceProtocol){
@@ -64,15 +64,25 @@ struct Locations: View {
             }
             
             // MARK: Location Add Modal
-            AddLocationsModal(isVisible: $vm.state.addLocationsVisible, vm: vm)
+            //AddLocationsModal(vm: vm)
+            if vm.state.addLocationsVisible {
+                
+                Color("Secondary")
+                    .opacity(0.6)
+                    .edgesIgnoringSafeArea(.top)
+                
+                AddLocationsModal(vm: self.vm)
+                    .transition(.move(edge: .bottom))
+            }
         }
+        
         
     }
     
     /* Methods */
     private func add() -> Void {
-        Task {
-            await vm.trigger(.toggleModal)
+        withAnimation(.spring(dampingFraction: 0.8)) {
+            vm.state.addLocationsVisible.toggle()
         }
     }
 }
