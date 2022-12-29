@@ -45,8 +45,8 @@ struct AddLocationsModal: View {
             
             // MARK: Cancel Button
             Button("Cancel") {
-                Task {
-                    await vm.trigger(.toggleModal)
+                withAnimation(.linear(duration: 0.2)) {
+                    vm.state.addLocationsVisible.toggle()
                 }
             }
             .foregroundColor(Color("PrimaryDark"))
@@ -58,8 +58,6 @@ struct AddLocationsModal: View {
         .frame(maxWidth: 330, maxHeight: 220)
         .background(Color("Primary"))
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .transition(.move(edge: .bottom))
-
     }
 }
 

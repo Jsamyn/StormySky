@@ -62,17 +62,21 @@ struct Locations: View {
                     await vm.trigger(LocationsInput.load)
                 }
             }
+            .zIndex(0)
             
             // MARK: Location Add Modal
             //AddLocationsModal(vm: vm)
             if vm.state.addLocationsVisible {
                 
-                Color("Secondary")
-                    .opacity(0.6)
-                    .edgesIgnoringSafeArea(.top)
-                
-                AddLocationsModal(vm: self.vm)
-                    .transition(.move(edge: .bottom))
+                Group {
+                    Color("Secondary")
+                        .opacity(0.6)
+                        .edgesIgnoringSafeArea(.top)
+                    
+                    AddLocationsModal(vm: self.vm)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                    
+                }.zIndex(1)
             }
         }
         
@@ -80,8 +84,12 @@ struct Locations: View {
     }
     
     /* Methods */
+    
+    /**
+     Display Add Locations Modal
+     */
     private func add() -> Void {
-        withAnimation(.spring(dampingFraction: 0.8)) {
+        withAnimation(.spring(dampingFraction: 0.8).speed(1.3)) {
             vm.state.addLocationsVisible.toggle()
         }
     }
