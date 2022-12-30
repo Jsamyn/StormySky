@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct SSTextFieldStyle: TextFieldStyle {
+    
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding()
+            .frame(height: 40)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color("Primary")))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10).strokeBorder(Color("Secondary"))
+            )
+            .padding()
+    }
+    
+}
+
 
 /**
  Add location modal for locations page
@@ -24,11 +39,13 @@ struct AddLocationsModal: View {
                       text: $vm.state.locationsText)
             .padding()
             .frame(height: 40)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color("Primary")))
-            .overlay(
-                RoundedRectangle(cornerRadius: 10).strokeBorder(Color("Secondary"))
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .strokeBorder(Color("Secondary"))
+                    .background(Color("Primary"))
             )
             .padding()
+            .accessibilityIdentifier("Location_Text_Field")
             
             // MARK: Add Button
             Button {
@@ -41,6 +58,7 @@ struct AddLocationsModal: View {
             .background(Color("PrimaryDark"))
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(5)
+            .accessibilityIdentifier("Add_Button")
 
             
             // MARK: Cancel Button
@@ -53,6 +71,7 @@ struct AddLocationsModal: View {
             .frame(maxWidth: 240, maxHeight: 40)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.horizontal)
+            .accessibilityIdentifier("Cancel_Button")
 
         }
         .frame(maxWidth: 330, maxHeight: 220)
