@@ -88,5 +88,26 @@ final class AddLocationModal_Tests: XCTestCase {
         XCTAssertEqual(textColor, textColorRes)
         XCTAssertEqual(clipShapeExp.cornerSize, clipShapeRes)
     }
+    
+    /**
+     Test Cancel Button styling
+     */
+    func testCancelButton() throws {
+        // Arrange
+        let text = "Cancel"
+        let fgColor = Color("PrimaryDark")
+        let csExp = RoundedRectangle(cornerRadius: 10).cornerSize
+        
+        // Act
+        let button = try sub.inspect().find(viewWithAccessibilityIdentifier: "Cancel_Button")
+        let textRes = try button.find(ViewType.Text.self).string()
+        let fgColorRes = try button.find(ViewType.Text.self).attributes().foregroundColor()
+        let csRes = try button.clipShape(RoundedRectangle.self).cornerSize
+        
+        // Assert
+        XCTAssertEqual(text, textRes)
+        XCTAssertEqual(fgColor, fgColorRes)
+        XCTAssertEqual(csExp, csRes)
+    }
 
 }

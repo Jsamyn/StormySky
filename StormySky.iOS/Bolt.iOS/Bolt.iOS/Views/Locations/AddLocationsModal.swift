@@ -7,21 +7,6 @@
 
 import SwiftUI
 
-struct SSTextFieldStyle: TextFieldStyle {
-    
-    func _body(configuration: TextField<Self._Label>) -> some View {
-        configuration
-            .padding()
-            .frame(height: 40)
-            .background(RoundedRectangle(cornerRadius: 10).fill(Color("Primary")))
-            .overlay(
-                RoundedRectangle(cornerRadius: 10).strokeBorder(Color("Secondary"))
-            )
-            .padding()
-    }
-    
-}
-
 
 /**
  Add location modal for locations page
