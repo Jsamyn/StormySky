@@ -53,6 +53,7 @@ struct AddLocationsModal: View {
             } label: {
                 Text("Add")
                     .foregroundColor(Color("SecondaryLight"))
+                    .accessibilityIdentifier("Add_Button_Text")
             }
             .frame(maxWidth: 240, maxHeight: 40)
             .background(Color("PrimaryDark"))

@@ -65,5 +65,28 @@ final class AddLocationModal_Tests: XCTestCase {
         XCTAssertEqual(phTextExp, phTextRes)
     }
     
+    /**
+     Test Add Button styling
+     */
+    func testAddButtonStyling() throws {
+        // Arrange
+        let text = "Add"
+        let bgColor = Color("PrimaryDark")
+        let textColor = Color("SecondaryLight")
+        let clipShapeExp = RoundedRectangle(cornerRadius: 10)
+        
+        // Act
+        let button = try sub.inspect().find(viewWithAccessibilityIdentifier: "Add_Button")
+        let textRes = try button.find(ViewType.Text.self).string()
+        let bgColorRes = try button.background().color().value()
+        let textColorRes = try button.find(ViewType.Text.self).attributes().foregroundColor()
+        let clipShapeRes = try button.clipShape(RoundedRectangle.self).cornerSize
+        
+        // Assert
+        XCTAssertEqual(text, textRes)
+        XCTAssertEqual(bgColor, bgColorRes)
+        XCTAssertEqual(textColor, textColorRes)
+        XCTAssertEqual(clipShapeExp.cornerSize, clipShapeRes)
+    }
 
 }
