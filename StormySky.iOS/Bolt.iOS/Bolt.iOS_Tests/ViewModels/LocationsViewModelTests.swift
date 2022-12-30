@@ -72,6 +72,27 @@ final class LocationsViewModelTests: XCTestCase {
         XCTAssertEqual(result.locations.count, 3)
     }
     
-    
+    /**
+     Validate clicking plus button toggles AddLocationModal on and off
+     */
+    func testToggleAddLocationModal() {
+        
+        /* Arrange */
+        let exp = expectation(description: "Toggle AddLocationModal on")
+        
+        /* Act */
+        let initial = self.vm.state.addLocationsVisible
+        Task {
+            await self.vm.trigger(.toggleModal)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 3)
+        let res = self.vm.state.addLocationsVisible
+        
+        /* Assert */
+        XCTAssertFalse(initial)
+        XCTAssertTrue(res)
+        
+    }
 
 }
