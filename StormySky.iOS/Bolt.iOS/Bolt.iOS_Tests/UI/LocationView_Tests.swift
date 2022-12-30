@@ -103,4 +103,37 @@ final class LocationsViewTests: XCTestCase {
         /* Assert */
         XCTAssertNotNil(button)
     }
+    
+    /**
+     Validate AddLocationModal appears properly when clicking '+' button
+     */
+    func testAddLocationModal() throws {
+        // Arrange
+        
+        // Act
+        try sub.inspect().find(viewWithAccessibilityIdentifier: "add_button").button().tap()
+        let locTextEdit = try sub.inspect().find(viewWithAccessibilityIdentifier: "Location_Text_Field")
+        let addButton = try sub.inspect().find(viewWithAccessibilityIdentifier: "Add_Button")
+        let cancelButton = try sub.inspect().find(viewWithAccessibilityIdentifier: "Cancel_Button")
+        
+        // Assert
+        XCTAssertNotNil(locTextEdit)
+        XCTAssertNotNil(addButton)
+        XCTAssertNotNil(cancelButton)
+    }
+    
+    /**
+     Validate cancel button dismisses Add Location Modal
+     */
+    func testAddLocationModalCancel() throws {
+        // Arrange
+        
+        // Act
+        try sub.inspect().find(viewWithAccessibilityIdentifier: "add_button").button().tap()
+        let cancelButton = try sub.inspect().find(viewWithAccessibilityIdentifier: "Cancel_Button")
+        try cancelButton.button().tap()
+        
+        // Assert
+        XCTAssertThrowsError(try sub.inspect().find(viewWithAccessibilityIdentifier: "Add_Location_Modal"))
+    }
 }

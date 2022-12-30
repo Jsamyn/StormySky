@@ -63,11 +63,14 @@ struct AddLocationsModal: View {
         .frame(maxWidth: 330, maxHeight: 220)
         .background(Color("Primary"))
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .accessibilityIdentifier("Add_Location_Modal")
     }
 }
 
+#if !TESTING
 struct AddLocationsModal_Previews: PreviewProvider {
     static var previews: some View {
         AddLocationsModal(vm: LocationsViewModel(locationService: UserLocationService()))
     }
 }
+#endif
