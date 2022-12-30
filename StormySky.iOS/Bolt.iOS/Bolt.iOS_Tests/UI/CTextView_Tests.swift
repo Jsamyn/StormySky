@@ -10,7 +10,6 @@ import ViewInspector
 import SwiftUI
 @testable import Bolt_iOS
 
-extension CText: Inspectable {}
 
 final class CTextView_Tests: XCTestCase {
     

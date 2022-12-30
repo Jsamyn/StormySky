@@ -36,6 +36,7 @@
 		4CDA1A59294977CE0094FCA7 /* InspectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDA1A58294977CE0094FCA7 /* InspectionExtension.swift */; };
 		4CE18457293C1EA0003F1B12 /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */; };
 		4CE1845A293C2CAB003F1B12 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE18459293C2CAB003F1B12 /* UserLocationService.swift */; };
+		4CE59FF8295E6E730003796E /* AddLocationModal_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE59FF7295E6E730003796E /* AddLocationModal_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		4CE18453293C13F1003F1B12 /* Bolt-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Bolt-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		4CE18456293C1EA0003F1B12 /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
 		4CE18459293C2CAB003F1B12 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
+		4CE59FF7295E6E730003796E /* AddLocationModal_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationModal_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 				4C01F1D52949788700EC5DFF /* LocationView_Tests.swift */,
 				4C01F1D7294978A700EC5DFF /* LocationListView_Tests.swift */,
 				4C202D26294E5F1700F3DCED /* CTextView_Tests.swift */,
+				4CE59FF7295E6E730003796E /* AddLocationModal_Tests.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE59FF8295E6E730003796E /* AddLocationModal_Tests.swift in Sources */,
 				4C01F1D62949788700EC5DFF /* LocationView_Tests.swift in Sources */,
 				4C5319F5293D991F005C41AA /* ForecastHomeViewModelTests.swift in Sources */,
 				4CDA1A59294977CE0094FCA7 /* InspectionExtension.swift in Sources */,
