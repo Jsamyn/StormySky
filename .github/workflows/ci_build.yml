@@ -25,25 +25,21 @@ jobs:
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
-          echo -n "$APPSTORE_CERTIFICATE" | base64 --decode --output $CERTIFICATE_PATH
-          echo -n "$APPSTORE_PROFILE" | base64 --decode --output $PP_PATH
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode --output $CERTIFICATE_PATH
+          echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode --output $PP_PATH
 
           # create temporary keychain
-          security create-keychain -p "$APPSTORE_CERTIFICATE_PASSWORD" $KEYCHAIN_PATH
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
           security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
-          security unlock-keychain -p "$APPSTORE_CERTIFICATE_PASSWORD" $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
 
           # import certificate to keychain
-          echo $KEYCHAIN_PATH
-          echo $CERTIFICATE_PATH
-          echo $APPSTORE_CERTIFICATE_PASSWORD
-
-          security import $CERTIFICATE_PATH -P "$APPSTORE_CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH
 
-          # # apply provisioning profile
-          # mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          # cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          # apply provisioning profile
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
       
       # Install proper ruby version
       - name: Install Ruby 3.1
