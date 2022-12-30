@@ -16,7 +16,6 @@ import SwiftUI
  */
 struct Locations: View {
     
-    @Namespace private var animation
     @ObservedObject var vm: LocationsViewModel
     
     init(locationsService: UserLocationServiceProtocol){

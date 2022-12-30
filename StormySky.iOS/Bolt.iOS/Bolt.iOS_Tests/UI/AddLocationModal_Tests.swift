@@ -10,7 +10,6 @@ import ViewInspector
 import SwiftUI
 @testable import Bolt_iOS
 
-extension AddLocationsModal: Inspectable {}
 
 final class AddLocationModal_Tests: XCTestCase {
     

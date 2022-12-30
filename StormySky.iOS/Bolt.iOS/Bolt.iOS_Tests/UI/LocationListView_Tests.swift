@@ -10,10 +10,6 @@ import SwiftUI
 import ViewInspector
 @testable import Bolt_iOS
 
-
-extension LocationsList: Inspectable {}
-extension LocationCell: Inspectable {}
-
 final class LocationsListView_Tests: XCTestCase {
     
     var sub: LocationsList!
