@@ -41,6 +41,8 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
       
+      - name: Check Profiles
+        run: ls -all ~/Library/MobileDevice/Provisioning
       # Install proper ruby version
       - name: Install Ruby 3.1
         uses: ruby/setup-ruby@v1
