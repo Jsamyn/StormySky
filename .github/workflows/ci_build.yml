@@ -53,6 +53,10 @@ jobs:
         run: bundle install
 
       # Execute Unit Tests
-      - name: Run Automated Tests
+      # - name: Run Automated Tests
+      #   working-directory: ./StormySky.iOS
+      #   run: bundle exec fastlane test_ios
+
+      - name: Build App Store IPA
         working-directory: ./StormySky.iOS
-        run: bundle exec fastlane test_ios
+        run: bundle exec fastlane build_appstore

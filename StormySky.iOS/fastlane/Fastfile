@@ -74,7 +74,7 @@ lane :build_appstore do
     export_options: {
       signingStyle: "manual",
       provisioningProfiles: {
-        "com.js.bolt": "bolt_appstore"
+        "com.js.bolt": "build_pp"
       }
     },
     clean: true,
