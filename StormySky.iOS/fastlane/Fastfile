@@ -1,6 +1,90 @@
 
 default_platform(:ios)
 
+# 
+# Certificates & Profiles Sync
+#
+desc <<END
+The 'dev_sync' lane is responsible for syncing all development provisioning profiles and certificates to the local machine
+END
+lane :dev_sync do 
+  match(
+    type: "development",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+end
+
+desc <<END
+The 'adhoc_sync' lane is responsible for syncing all ad-hoc provisioning profiles and certificates to the local machine
+END
+lane :adhoc_sync do 
+  match(
+    type: "adhoc",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+end
+
+desc <<END
+The 'appstore_sync' lane is responsible for syncing all app store provisioning profiles and certificates to the local machine
+END
+lane :appstore_sync do 
+  auth_token_str = ENV['GIT_MATCH_TOKEN']
+  auth_token = Base64.strict_encode64(auth_token_str)
+
+  puts auth_token
+
+  match(
+    git_url: "https://github.com/Jsamyn/StormySky_Match.git",
+    git_basic_authorization: auth_token,
+    type: "appstore",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+end
+
+desc <<END
+The 'generate_dev_certs' lane is responsible for generating new certificates and profiles for development
+END
+lane :generate_dev_certs do 
+  sync_code_signing(
+    type: "development",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: false
+  )
+
+end
+
+desc <<END
+The 'generate_adhoc_certs' lane is responsible for generating new certificates and profiles for adhoc distribution
+END
+lane :generate_adhoc_certs do 
+  sync_code_signing(
+    type: "adhoc",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: false
+  )
+
+end
+
+desc <<END
+The 'generate_appstore_certs' lane is responsible for generating new certificates and profiles for appstore distribution
+END
+lane :generate_appstore_certs do 
+  sync_code_signing(
+    type: "appstore",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: false
+  )
+
+end
 
 # 
 # Builds
