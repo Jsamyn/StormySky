@@ -200,6 +200,8 @@ lane :ci_build_appstore do
     force_for_new_devices: true,
     readonly: true
   )
+
+  increment_build
   
   gym(
     project: "Bolt.ios/Bolt.iOS.xcodeproj",
@@ -233,6 +235,7 @@ desc <<END
 The 'deploy_testflight' lane is used to deploy the bolt application to a proper TestFlight channel in 
 App Store connect. 
 END
+
 lane :deploy_testflight do
   api_key = app_store_connect_api_key(
     key_id: ENV['APP_STORE_KEY_ID'],
