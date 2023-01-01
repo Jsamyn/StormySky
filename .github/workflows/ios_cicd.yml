@@ -5,31 +5,33 @@ on:
     branches: [ main ]
 
 jobs:
-  # ci_validation:
-  #   runs-on: macos-12
-  #   steps:
-  #     # Checkout source code
-  #     - name: Checkout Repository 
-  #       uses: actions/checkout@v1
+  pr_validation:
+    runs-on: macos-12
+    steps:
+      # Checkout source code
+      - name: Checkout Repository 
+        uses: actions/checkout@v1
 
-  #     # Install proper ruby version
-  #     - name: Install Ruby 3.1
-  #       uses: ruby/setup-ruby@v1
-  #       with: 
-  #         ruby-version: 3.1
+      # Install proper ruby version
+      - name: Install Ruby 3.1
+        uses: ruby/setup-ruby@v1
+        with: 
+          ruby-version: 3.1
           
-  #     # Install gems
-  #     - name: Install Ruby Gems
-  #       working-directory: ./StormySky.iOS
-  #       run: bundle install
+      # Install gems
+      - name: Install Ruby Gems
+        working-directory: ./StormySky.iOS
+        run: bundle install
 
-  #     # Execute Unit Tests
-  #     - name: Run Automated Tests
-  #       working-directory: ./StormySky.iOS
-  #       run: bundle exec fastlane test_ios
+      # Execute Unit Tests
+      - name: Run Automated Tests
+        working-directory: ./StormySky.iOS
+        run: bundle exec fastlane test_ios
 
   deploy:
     runs-on: macos-12
+    needs: [pr_validation]
+    if: contains('refs/head/releases/v')
     steps:
       # Checkout source code
       - name: Checkout Repository 

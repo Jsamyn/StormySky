@@ -200,8 +200,6 @@ lane :ci_build_appstore do
     force_for_new_devices: true,
     readonly: true
   )
-
-  increment_build
   
   gym(
     project: "Bolt.ios/Bolt.iOS.xcodeproj",
