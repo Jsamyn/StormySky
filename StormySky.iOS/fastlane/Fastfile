@@ -178,7 +178,7 @@ lane :ci_build_appstore do
 
   create_keychain(
     name: "tmp-keychain",
-    password: "tmp-password"
+    password: "tmp-password",
     default_keychain: true,
     unlock: true,
     timeout: 3600,
