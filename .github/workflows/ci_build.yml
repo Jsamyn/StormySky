@@ -58,7 +58,7 @@ jobs:
 
       # Deploy to Test Flight
       - name: Deploy To TestFlight
-        working-directory: ./StormySky,iOS
+        working-directory: ./StormySky.iOS
         env:
           APP_STORE_KEY_CONTENT: ${{ secrets.APP_STORE_KEY_CONTENT }}
           APP_STORE_KEY_ID: ${{ secrets.APP_STORE_KEY_ID }}
