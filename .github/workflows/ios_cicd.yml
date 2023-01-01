@@ -1,0 +1,70 @@
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  pr_validation:
+    runs-on: macos-12
+    steps:
+      # Checkout source code
+      - name: Checkout Repository 
+        uses: actions/checkout@v1
+
+      # Install proper ruby version
+      - name: Install Ruby 3.1
+        uses: ruby/setup-ruby@v1
+        with: 
+          ruby-version: 3.1
+          
+      # Install gems
+      - name: Install Ruby Gems
+        working-directory: ./StormySky.iOS
+        run: bundle install
+
+      # Execute Unit Tests
+      - name: Run Automated Tests
+        working-directory: ./StormySky.iOS
+        run: bundle exec fastlane test_ios
+
+  deploy:
+    runs-on: macos-12
+    needs: [pr_validation]
+    if: contains('refs/head/releases/v', github.ref)
+    steps:
+      # Checkout source code
+      - name: Checkout Repository 
+        uses: actions/checkout@v1
+
+      # Install proper ruby version
+      - name: Install Ruby 3.1
+        uses: ruby/setup-ruby@v1
+        with: 
+          ruby-version: 3.1
+          
+      # Install gems
+      - name: Install Ruby Gems
+        working-directory: ./StormySky.iOS
+        run: bundle install
+
+      # Run CI build lane 
+      - name: Build iOS App
+        working-directory: ./StormySky.iOS
+        env:
+          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          GIT_MATCH_TOKEN: ${{ secrets.GIT_MATCH_TOKEN }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        run: bundle exec fastlane ci_build_appstore 
+
+      # Deploy to Test Flight
+      - name: Deploy To TestFlight
+        working-directory: ./StormySky.iOS
+        env:
+          APP_STORE_KEY_CONTENT: ${{ secrets.APP_STORE_KEY_CONTENT }}
+          APP_STORE_KEY_ID: ${{ secrets.APP_STORE_KEY_ID }}
+          APP_STORE_ISSUER_ID: ${{ secrets.APP_STORE_ISSUER_ID }}
+          IPA_PATH: ${{ secrets.IPA_PATH }}
+        run: bundle exec fastlane deploy_testflight
+

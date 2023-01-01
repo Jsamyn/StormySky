@@ -1,6 +1,90 @@
 
 default_platform(:ios)
 
+# 
+# Certificates & Profiles Sync
+#
+desc <<END
+The 'dev_sync' lane is responsible for syncing all development provisioning profiles and certificates to the local machine
+END
+lane :dev_sync do 
+  match(
+    type: "development",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+end
+
+desc <<END
+The 'adhoc_sync' lane is responsible for syncing all ad-hoc provisioning profiles and certificates to the local machine
+END
+lane :adhoc_sync do 
+  match(
+    type: "adhoc",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+end
+
+desc <<END
+The 'appstore_sync' lane is responsible for syncing all app store provisioning profiles and certificates to the local machine
+END
+lane :appstore_sync do 
+  auth_token_str = ENV['GIT_MATCH_TOKEN']
+  auth_token = Base64.strict_encode64(auth_token_str)
+
+  puts auth_token
+
+  match(
+    git_url: "https://github.com/Jsamyn/StormySky_Match.git",
+    git_basic_authorization: auth_token,
+    type: "appstore",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+end
+
+desc <<END
+The 'generate_dev_certs' lane is responsible for generating new certificates and profiles for development
+END
+lane :generate_dev_certs do 
+  sync_code_signing(
+    type: "development",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: false
+  )
+
+end
+
+desc <<END
+The 'generate_adhoc_certs' lane is responsible for generating new certificates and profiles for adhoc distribution
+END
+lane :generate_adhoc_certs do 
+  sync_code_signing(
+    type: "adhoc",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: false
+  )
+
+end
+
+desc <<END
+The 'generate_appstore_certs' lane is responsible for generating new certificates and profiles for appstore distribution
+END
+lane :generate_appstore_certs do 
+  sync_code_signing(
+    type: "appstore",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: false
+  )
+
+end
 
 # 
 # Builds
@@ -74,7 +158,57 @@ lane :build_appstore do
     export_options: {
       signingStyle: "manual",
       provisioningProfiles: {
-        "com.js.bolt": "bolt_appstore"
+        "com.js.bolt": "build_pp"
+      }
+    },
+    clean: true,
+    output_directory: "build/appstore",
+    output_name: "bolt.ipa"
+  )  
+end
+
+desc <<END
+The 'ci_build_appstore' lane is responsible for building the application for app store distribution through the CI/CD pipeline
+END
+lane :ci_build_appstore do 
+  puts("Building Bolt for app store..")
+
+  ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '600'
+  ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '12'
+
+  create_keychain(
+    name: "tmp-keychain",
+    password: "tmp-password",
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    lock_when_sleeps: true
+  )
+
+  auth_token_str = ENV['GIT_MATCH_TOKEN']
+  auth_token = Base64.strict_encode64(auth_token_str)
+
+  puts auth_token
+
+  match(
+    git_url: "https://github.com/Jsamyn/StormySky_Match.git",
+    git_basic_authorization: auth_token,
+    keychain_name: "tmp-keychain",
+    keychain_password: "tmp-password",
+    type: "appstore",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+  
+  gym(
+    project: "Bolt.ios/Bolt.iOS.xcodeproj",
+    configuration: "Release",
+    export_method: "app-store",
+    export_options: {
+      signingStyle: "manual",
+      provisioningProfiles: {
+        "com.js.bolt": "build_pp"
       }
     },
     clean: true,
@@ -99,11 +233,12 @@ desc <<END
 The 'deploy_testflight' lane is used to deploy the bolt application to a proper TestFlight channel in 
 App Store connect. 
 END
+
 lane :deploy_testflight do
   api_key = app_store_connect_api_key(
     key_id: ENV['APP_STORE_KEY_ID'],
     issuer_id: ENV['APP_STORE_ISSUER_ID'],
-    key_filepath: ENV['APP_STORE_KEY_FILE']
+    key_content: ENV['APP_STORE_KEY_CONTENT']
   )
 
   upload_to_testflight(
