@@ -23,7 +23,12 @@ jobs:
         working-directory: ./StormySky.iOS
         run: bundle install
 
-      # Install Provisioning Profiles and Certificates using Fastlane Match
+      # Execute Unit Tests
+      # - name: Run Automated Tests
+      #   working-directory: ./StormySky.iOS
+      #   run: bundle exec fastlane test_ios
+
+      # Run CI build lane 
       - name: Install the Apple certificate and provisioning profile
         working-directory: ./StormySky.iOS
         env:
@@ -31,16 +36,4 @@ jobs:
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           GIT_MATCH_TOKEN: ${{ secrets.GIT_MATCH_TOKEN }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-        run: bundle exec fastlane appstore_sync
-      
-      - name: Check Profiles
-        run: ls -all ~/Library/MobileDevice/Provisioning
-
-      # Execute Unit Tests
-      # - name: Run Automated Tests
-      #   working-directory: ./StormySky.iOS
-      #   run: bundle exec fastlane test_ios
-
-      - name: Build App Store IPA
-        working-directory: ./StormySky.iOS
-        run: bundle exec fastlane build_appstore
+        run: bundle exec fastlane ci_build_appstore 

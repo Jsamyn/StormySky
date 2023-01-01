@@ -168,6 +168,56 @@ lane :build_appstore do
 end
 
 desc <<END
+The 'ci_build_appstore' lane is responsible for building the application for app store distribution through the CI/CD pipeline
+END
+lane :ci_build_appstore do 
+  puts("Building Bolt for app store..")
+
+  ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '600'
+  ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '12'
+
+  create_keychain(
+    name: "tmp-keychain",
+    password: "tmp-password"
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    lock_when_sleeps: true
+  )
+
+  auth_token_str = ENV['GIT_MATCH_TOKEN']
+  auth_token = Base64.strict_encode64(auth_token_str)
+
+  puts auth_token
+
+  match(
+    git_url: "https://github.com/Jsamyn/StormySky_Match.git",
+    git_basic_authorization: auth_token,
+    keychain_name: "tmp-keychain",
+    keychain_password: "tmp-password",
+    type: "appstore",
+    app_identifier: ['com.js.bolt'],
+    force_for_new_devices: true,
+    readonly: true
+  )
+  
+  gym(
+    project: "Bolt.ios/Bolt.iOS.xcodeproj",
+    configuration: "Release",
+    export_method: "app-store",
+    export_options: {
+      signingStyle: "manual",
+      provisioningProfiles: {
+        "com.js.bolt": "build_pp"
+      }
+    },
+    clean: true,
+    output_directory: "build/appstore",
+    output_name: "bolt.ipa"
+  )  
+end
+
+desc <<END
 The 'increment_build' lane is responsible for incrementing the build number in the iOS project
 END
 lane :increment_build do
