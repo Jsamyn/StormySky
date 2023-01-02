@@ -29,7 +29,7 @@ struct Locations: View {
         ZStack {
             VStack {
                 /* Title */
-                Text("Locations")
+                CText("Locations")
                     .font(.title)
                     .padding()
                     .accessibilityIdentifier("locations_title")

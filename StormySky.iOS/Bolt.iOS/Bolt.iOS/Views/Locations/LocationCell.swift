@@ -15,17 +15,17 @@ struct LocationCell: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("\(location.city), \(location.state)")
+                CText("\(location.city), \(location.state)")
                     .font(.title)
             }
             .padding()
             
             Spacer()
             
-            Text("\(location.lastTemp)°")
+            CText("\(location.lastTemp)°")
                 .font(.title)
             Image(systemName: location.icon)
-            
+                .foregroundColor(Color("PrimaryDark"))
                 .font(.title)
         }
         .padding(5)
