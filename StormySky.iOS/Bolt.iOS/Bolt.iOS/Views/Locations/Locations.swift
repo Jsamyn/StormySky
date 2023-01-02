@@ -5,8 +5,6 @@
 //  Created by Joseph Samyn on 11/19/22.
 //
 
-// TODO: Refactor LocationList into a separate view for testability
-
 import SwiftUI
 
 
