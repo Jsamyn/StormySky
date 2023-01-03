@@ -15,15 +15,6 @@ protocol ViewModel: ObservableObject {
      */
     associatedtype State
     
-    /**
-     An input that can be triggered via the trigger method
-     */
-    associatedtype Input
-    
     var state: State { get }
     
-    /**
-     Updates state based on the input provided
-     */
-    func trigger(_ input: Input) async 
 }

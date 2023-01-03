@@ -56,7 +56,7 @@ struct Locations: View {
             .background(Color("Primary"))
             .onAppear{
                 Task {
-                    await vm.trigger(LocationsInput.load)
+                    await self.vm.loadLocations()
                 }
             }
             .zIndex(0)
@@ -87,7 +87,7 @@ struct Locations: View {
      */
     private func add() -> Void {
         withAnimation(.spring(dampingFraction: 0.8).speed(1.3)) {
-            vm.state.addLocationsVisible.toggle()
+            vm.toggleAddLocationModal()
         }
     }
 }
