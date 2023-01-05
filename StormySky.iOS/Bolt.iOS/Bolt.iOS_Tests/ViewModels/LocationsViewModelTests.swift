@@ -59,7 +59,7 @@ final class LocationsViewModelTests: XCTestCase {
         
         /* Act */
         Task {
-            await self.vm.trigger(LocationsInput.load)
+            await self.vm.loadLocations()
             exp.fulfill()
         }
         
@@ -78,15 +78,10 @@ final class LocationsViewModelTests: XCTestCase {
     func testToggleAddLocationModal() {
         
         /* Arrange */
-        let exp = expectation(description: "Toggle AddLocationModal on")
         
         /* Act */
         let initial = self.vm.state.addLocationsVisible
-        Task {
-            await self.vm.trigger(.toggleModal)
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 3)
+        self.vm.toggleAddLocationModal()
         let res = self.vm.state.addLocationsVisible
         
         /* Assert */
