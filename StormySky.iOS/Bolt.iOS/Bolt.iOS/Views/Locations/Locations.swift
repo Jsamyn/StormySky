@@ -5,8 +5,6 @@
 //  Created by Joseph Samyn on 11/19/22.
 //
 
-// TODO: Refactor LocationList into a separate view for testability
-
 import SwiftUI
 
 
@@ -17,6 +15,9 @@ import SwiftUI
 struct Locations: View {
     
     @ObservedObject var vm: LocationsViewModel
+    
+    /* ViewInspector Properties */
+    internal var didAppear: ((Self) -> Void)?
     
     init(locationsService: UserLocationServiceProtocol){
         self.vm = LocationsViewModel(locationService: locationsService)
@@ -29,7 +30,7 @@ struct Locations: View {
         ZStack {
             VStack {
                 /* Title */
-                Text("Locations")
+                CText("Locations")
                     .font(.title)
                     .padding()
                     .accessibilityIdentifier("locations_title")
@@ -57,8 +58,9 @@ struct Locations: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("Primary"))
             .onAppear{
+                self.didAppear?(self)
                 Task {
-                    await vm.trigger(LocationsInput.load)
+                    await self.vm.loadLocations()
                 }
             }
             .zIndex(0)
@@ -89,7 +91,7 @@ struct Locations: View {
      */
     private func add() -> Void {
         withAnimation(.spring(dampingFraction: 0.8).speed(1.3)) {
-            vm.state.addLocationsVisible.toggle()
+            vm.toggleAddLocationModal()
         }
     }
 }

@@ -20,7 +20,6 @@ struct ForecastHome: View {
         VStack {
             
             /* Activity Indicator */
-            //ActivityIndicator(isVisible: $vm.state.isLoading)
             Group {
                 /* Refresh Button */
                 if (vm.state.isLoading){

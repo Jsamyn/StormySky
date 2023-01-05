@@ -135,4 +135,19 @@ final class LocationsViewTests: XCTestCase {
         // Assert
         XCTAssertThrowsError(try sub.inspect().find(viewWithAccessibilityIdentifier: "Add_Location_Modal"))
     }
+    
+    /// Validate locationsList state property is populated in onAppear
+    func testLocationsListPropertyPopulated() {
+        
+        // Arrange
+        
+        // Act
+        let exp = sub.on(\.didAppear) { view in
+            XCTAssertNotNil(try view.actualView().vm.state.locations)
+        }
+        
+        ViewHosting.host(view: sub)
+        wait(for: [exp], timeout: 1)
+        // Assert
+    }
 }

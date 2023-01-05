@@ -17,24 +17,37 @@ struct AddLocationsModal: View {
     
     @ObservedObject var vm: LocationsViewModel
     
+    /* ViewInspector Properties */
+    internal var didAppear: ((Self) -> Void)?
+    
     var body: some View {
         VStack {
             // MARK: Text Field
-            TextField("Enter zip code of location..",
-                      text: $vm.state.locationsText)
+            TextField("",
+                      text: $vm.state.locationsText, prompt: Text("Enter zip code of location..").foregroundColor(Color("PrimaryLight")))
             .padding()
             .frame(height: 40)
+            .foregroundColor(Color("PrimaryDark"))
+            .accentColor(Color("PrimaryDark"))
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .strokeBorder(Color("Secondary"))
                     .background(Color("Primary"))
             )
-            .padding()
+            .padding(.horizontal)
+            .keyboardType(.numberPad)
             .accessibilityIdentifier("Location_Text_Field")
+            
+            if (!vm.state.locationsErrorText.isEmpty) {
+                Text(vm.state.locationsErrorText)
+                    .foregroundColor(Color("ErrorRed"))
+                    .padding(.bottom, 10)
+                    .accessibilityIdentifier("Error_Text")
+            }
             
             // MARK: Add Button
             Button {
-                print("Adding Location..")
+                self.vm.addLocation()
             } label: {
                 Text("Add")
                     .foregroundColor(Color("SecondaryLight"))
@@ -50,7 +63,7 @@ struct AddLocationsModal: View {
             // MARK: Cancel Button
             Button("Cancel") {
                 withAnimation(.linear(duration: 0.2)) {
-                    vm.state.addLocationsVisible.toggle()
+                    vm.toggleAddLocationModal()
                 }
             }
             .foregroundColor(Color("PrimaryDark"))
@@ -64,6 +77,7 @@ struct AddLocationsModal: View {
         .background(Color("Primary"))
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .accessibilityIdentifier("Add_Location_Modal")
+        .onAppear { self.didAppear?(self) }
     }
 }
 
