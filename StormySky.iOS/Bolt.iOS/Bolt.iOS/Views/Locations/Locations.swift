@@ -16,6 +16,9 @@ struct Locations: View {
     
     @ObservedObject var vm: LocationsViewModel
     
+    /* ViewInspector Properties */
+    internal var didAppear: ((Self) -> Void)?
+    
     init(locationsService: UserLocationServiceProtocol){
         self.vm = LocationsViewModel(locationService: locationsService)
     }
@@ -55,6 +58,7 @@ struct Locations: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("Primary"))
             .onAppear{
+                self.didAppear?(self)
                 Task {
                     await self.vm.loadLocations()
                 }
