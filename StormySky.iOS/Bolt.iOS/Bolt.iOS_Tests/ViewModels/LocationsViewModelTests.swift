@@ -35,9 +35,8 @@ final class LocationsViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    /**
-     Test the initialization of state struct
-     */
+
+    /// Test the initialization of state struct
     func testInitialization() {
         /* Arrange */
         
@@ -49,9 +48,8 @@ final class LocationsViewModelTests: XCTestCase {
         XCTAssertEqual(result.locations.count, 0)
     }
     
-    /**
-     Test the loading input on the trigger method
-     */
+
+    /// Test the loading input on the trigger method
     func testTriggerLoadingState() {
         
         /* Arrange */
@@ -72,9 +70,8 @@ final class LocationsViewModelTests: XCTestCase {
         XCTAssertEqual(result.locations.count, 3)
     }
     
-    /**
-     Validate clicking plus button toggles AddLocationModal on and off
-     */
+
+    /// Validate clicking plus button toggles AddLocationModal on and off
     func testToggleAddLocationModal() {
         
         /* Arrange */
@@ -88,6 +85,32 @@ final class LocationsViewModelTests: XCTestCase {
         XCTAssertFalse(initial)
         XCTAssertTrue(res)
         
+    }
+    
+
+    /// Validate the proper error message is displayed when zip code not matching valid criteria is submitted
+    func testAddInvalidZipCodeLength() {
+        /* Arrange */
+        vm.state.locationsText = "123"
+        let errorText = vm.zipCodeImproperLength
+        
+        /* Act */
+        vm.addLocation()
+        
+        /* Assert */
+        XCTAssertEqual(errorText, vm.state.locationsErrorText)
+    }
+    
+    /// Validate no error message is set when a valid zip code is entered
+    func testAddValidZipCodeNoErrorMessage() {
+        // Arrange
+        vm.state.locationsText = "12345"
+        
+        // Act
+        vm.addLocation()
+        
+        // Assert
+        XCTAssertTrue(vm.state.locationsErrorText.isEmpty)
     }
 
 }
