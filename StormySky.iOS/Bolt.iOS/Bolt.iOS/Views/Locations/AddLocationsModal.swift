@@ -17,6 +17,9 @@ struct AddLocationsModal: View {
     
     @ObservedObject var vm: LocationsViewModel
     
+    /* ViewInspector Properties */
+    internal var didAppear: ((Self) -> Void)?
+    
     var body: some View {
         VStack {
             // MARK: Text Field
@@ -35,9 +38,12 @@ struct AddLocationsModal: View {
             .keyboardType(.numberPad)
             .accessibilityIdentifier("Location_Text_Field")
             
-            Text(vm.state.locationsErrorText)
-                .foregroundColor(Color("ErrorRed"))
-                .padding(.bottom, 10)
+            if (!vm.state.locationsErrorText.isEmpty) {
+                Text(vm.state.locationsErrorText)
+                    .foregroundColor(Color("ErrorRed"))
+                    .padding(.bottom, 10)
+                    .accessibilityIdentifier("Error_Text")
+            }
             
             // MARK: Add Button
             Button {
@@ -71,6 +77,7 @@ struct AddLocationsModal: View {
         .background(Color("Primary"))
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .accessibilityIdentifier("Add_Location_Modal")
+        .onAppear { self.didAppear?(self) }
     }
 }
 

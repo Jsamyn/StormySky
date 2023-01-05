@@ -22,9 +22,7 @@ final class AddLocationModal_Tests: XCTestCase {
         sub = AddLocationsModal(vm: vm)
     }
 
-    /**
-     Test all elements are present on modal
-     */
+    /// Test all elements are present on modal
     func testElementsPresent() throws {
         
         // Arrange
@@ -40,9 +38,7 @@ final class AddLocationModal_Tests: XCTestCase {
         XCTAssertNotNil(cancelButton)
     }
     
-    /**
-     Test TextField styling
-     */
+    /// Test TextField styling
     func tesTextFieldtStyling() throws {
         // Arrange
         let textField = try sub.inspect().find(viewWithAccessibilityIdentifier: "Location_Text_Field")
@@ -64,9 +60,7 @@ final class AddLocationModal_Tests: XCTestCase {
         XCTAssertEqual(phTextExp, phTextRes)
     }
     
-    /**
-     Test Add Button styling
-     */
+    /// Test Add Button styling
     func testAddButtonStyling() throws {
         // Arrange
         let text = "Add"
@@ -88,9 +82,7 @@ final class AddLocationModal_Tests: XCTestCase {
         XCTAssertEqual(clipShapeExp.cornerSize, clipShapeRes)
     }
     
-    /**
-     Test Cancel Button styling
-     */
+    /// Test Cancel Button styling
     func testCancelButton() throws {
         // Arrange
         let text = "Cancel"
@@ -107,6 +99,32 @@ final class AddLocationModal_Tests: XCTestCase {
         XCTAssertEqual(text, textRes)
         XCTAssertEqual(fgColor, fgColorRes)
         XCTAssertEqual(csExp, csRes)
+    }
+    
+    /// Validate error text appears when error text is not empty
+    func testErrorTextPresentOnError() throws {
+        // Arrange
+        vm.state.locationsErrorText = vm.zipCodeImproperLength
+        
+        // Act
+        let errorTextRes = try sub.inspect().find(viewWithAccessibilityIdentifier: "Error_Text")
+        
+        // Assert
+        XCTAssertNotNil(errorTextRes)
+    }
+    
+    /// Validate error text styling matches all styling in UI design document
+    func testErrorTextStyleMatchesUIDesign() throws {
+        // Arrange
+        vm.state.locationsErrorText = vm.zipCodeImproperLength
+        let errorColor = Color("ErrorRed")
+        let errorText = try sub.inspect().find(viewWithAccessibilityIdentifier: "Error_Text")
+        
+        // Act
+        let errorColorRes = try errorText.text().attributes().foregroundColor()
+        
+        // Assert
+        XCTAssertEqual(errorColor, errorColorRes)
     }
 
 }
